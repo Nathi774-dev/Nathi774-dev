@@ -1,5 +1,9 @@
-console.log("hello");
+let talk = true;
+if (talk == true) {
 
-console.log("This is a changed file with no errors");
+    console.log("hello");
 
-console.log("I am finally fixed!");
+    console.log("This is a changed file with no errors");
+
+    console.log("I am finally fixed!");
+}
