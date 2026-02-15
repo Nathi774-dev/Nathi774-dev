@@ -1,6 +1,5 @@
-hello
-# this is me
+console.log("hello");
 
-this is an update
+console.log("This is a changed file with no errors");
 
-I just added another feature, take a look
+console.log("I am finally fixed!");
