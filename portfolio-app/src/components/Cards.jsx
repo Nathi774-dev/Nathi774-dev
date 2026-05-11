@@ -35,7 +35,7 @@ function Cards(){
             title: "Game Development",
             description: "I build small indie games for now, but will scale overtime",
             icon: gameIcon,
-            route: "gamedev",
+            route: "/gamedev",
             glow: "hover:shadow-blue-500/20"
         },
     ];
@@ -77,7 +77,7 @@ function Cards(){
                             transition={{delay: index * 0.1, duration: 0.6}}
                             viewport={{once: true}}
                             onClick={() => nav(card.route)}
-                            className={`b-zinc-400 border border-white/10 rounded-2x1 p-7 cursor-pointer transition duration-300 hover:-translate-y-2 hover:border-cyan-400 shadow-xl ${card.glow}`}
+                            className={`b-zinc-400 border border-white/10 rounded-2xl p-7 cursor-pointer transition duration-300 hover:-translate-y-2 hover:border-cyan-400 shadow-xl ${card.glow}`}
                         >
                             {/* The icon goes here */}
                             <div className='w-15 h-15 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-6'>
