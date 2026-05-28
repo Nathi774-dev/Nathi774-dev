@@ -1,0 +1,10 @@
+Use npm install package as a reference:
+morgan
+express
+jsonwebtoken
+bcrypt
+mongoose
+nodemailer
+openai
+cors
+dotenv
