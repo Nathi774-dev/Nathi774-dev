@@ -1,0 +1,71 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.6, pytest-9.1.0, pluggy-1.6.0 -- C:\Programming\Web-development\full-stack-applications\full-stack-project4\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Programming\Web-development\full-stack-applications\full-stack-project4\backend
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 9 items
+
+app/tests/test_auth.py::test_register_user PASSED                        [ 11%]
+app/tests/test_auth.py::test_replicate_duplicate_email PASSED            [ 22%]
+app/tests/test_auth.py::test_login_user_invalid_password PASSED          [ 33%]
+app/tests/test_auth.py::test_login_user_success PASSED                   [ 44%]
+app/tests/test_auth.py::test_get_current_user_without_token FAILED       [ 55%]
+app/tests/test_auth.py::test_get_current_user_with_token FAILED          [ 66%]
+app/tests/test_auth.py::test_verify_access_token PASSED                  [ 77%]
+app/tests/test_auth.py::test_verify_invalid_token PASSED                 [ 88%]
+app/tests/test_auth.py::test_verify_token_without_subject PASSED         [100%]
+
+================================== FAILURES ===================================
+_____________________ test_get_current_user_without_token _____________________
+
+client = <starlette.testclient.TestClient object at 0x00000257BEC91850>
+
+    def test_get_current_user_without_token(client):
+        """This tests if the api can get the user without the jwt token"""
+        response = client.get("/users/me")
+>       assert response.status_code == 401     # This should reject the request
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       assert 404 == 401
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+app\tests\test_auth.py:55: AssertionError
+______________________ test_get_current_user_with_token _______________________
+
+client = <starlette.testclient.TestClient object at 0x00000257BEC371D0>
+
+    def test_get_current_user_with_token(client):
+        client.post("/auth/register", json={
+            "email": "test@example.com",
+            "password": "password0101"
+        })
+    
+        login = client.post("/auth/login", json={
+            "email": "test@example.com",
+            "password": "password0101"
+        })
+        token = login.json()["access_token"]
+    
+        response = client.get("/users/me", headers={"Authorization": f"Bearer {token}"})
+    
+>       assert response.status_code == 200
+E       assert 404 == 200
+E        +  where 404 = <Response [404 Not Found]>.status_code
+
+app\tests\test_auth.py:71: AssertionError
+---------------------------- Captured stdout call -----------------------------
+Token created successfully
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Programming\Web-development\full-stack-applications\full-stack-project4\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+app\core\config.py:3
+  C:\Programming\Web-development\full-stack-applications\full-stack-project4\backend\app\core\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED app/tests/test_auth.py::test_get_current_user_without_token - assert 4...
+FAILED app/tests/test_auth.py::test_get_current_user_with_token - assert 404 ...
+=================== 2 failed, 7 passed, 2 warnings in 5.76s ===================
