@@ -49,10 +49,13 @@ def client():
 @pytest.fixture(autouse=True)
 def clean_database():
     db = TestingSessionLocal()
-    db.query(User).delete()
+    # This makes sure that the applications table is deleted before the users table
+    for table in reversed(Base.metadata.sorted_tables):
+        db.execute(table.delete())
     db.commit()
     yield
     
-    db.query(User).delete()
+    for table in reversed(Base.metadata.sorted_tables):
+        db.execute(table.delete())
     db.commit()
     db.close()

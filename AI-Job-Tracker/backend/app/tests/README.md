@@ -335,3 +335,58 @@ FAILED app/tests/test_auth.py::test_get_current_user_with_token - assert 404 ...
 - [X] Invalid password rejected
 - [X] Access protected route without token rejected
 - [X] Access protected route with valid token accepted
+
+## Fifth test
+
+### Testing the CRUD operations
+- [ ] Successful creation of an application
+- [ ] Updating the status of an application (Update)
+- [ ] Deleting an application while it's not been reviewed (Delete)
+- [ ] Testing routes with applications that have invalid tokens
+
+## Results
+============================= test session starts =============================
+platform win32 -- Python 3.11.6, pytest-9.1.0, pluggy-1.6.0
+rootdir: C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collected 1 item
+
+app\tests\test_applications.py .                                         [100%]
+
+============================== warnings summary ===============================
+app\core\config.py:3
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\app\core\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 1 passed, 1 warning in 1.09s =========================
+
+============================= test session starts =============================
+platform win32 -- Python 3.11.6, pytest-9.1.0, pluggy-1.6.0 -- C:\Users\Anathi\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend
+configfile: pytest.ini
+plugins: anyio-4.13.0
+collecting ... collected 6 items
+
+app/tests/test_applications.py::test_create_application PASSED           [ 16%]
+app/tests/test_applications.py::test_get_applications PASSED             [ 33%]
+app/tests/test_applications.py::test_get_single_application PASSED       [ 50%]
+app/tests/test_applications.py::test_update_application PASSED           [ 66%]
+app/tests/test_applications.py::test_delete_applications PASSED          [ 83%]
+app/tests/test_applications.py::test_create_application_without_token PASSED [100%]
+
+============================== warnings summary ===============================
+app\core\config.py:3
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\app\core\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 6 passed, 1 warning in 4.99s =========================
+
+## Test results
+- [X] Successful creation of an application
+- [X] Updating the status of an application (Update)
+- [X] Deleting an application while it's not been reviewed (Delete)
+- [X] Testing routes with applications that have invalid tokens
