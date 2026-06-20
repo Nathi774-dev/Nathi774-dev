@@ -2,7 +2,9 @@ import pytest
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from fastapi.testclient import TestClient
+import uuid
 
+from app.models.interview import Interview
 from app.models.user import User
 from app.models.company import Company
 from app.models.application import Application
@@ -36,7 +38,26 @@ def override_get_db():
         yield db
     finally:
         db.close()
-        
+   
+@pytest.fixture
+def get_auth_headers(client):
+    email = f"test_{uuid.uuid4()}@example.com"
+    
+    register_response = client.post("/auth/register", json={
+        "email": email,
+        "password": 'password12345'
+    })
+    
+    assert register_response.status_code == 201
+    
+    login_response = client.post("/auth/login", json={
+      "email": email,
+      "password": "password12345"  
+    })
+    
+    assert login_response.status_code == 200
+    token = login_response.json()["access_token"]
+    return {"Authorization": f"Bearer {token}"}
 # for testing purposes
 app.dependency_overrides[get_db] = override_get_db
 

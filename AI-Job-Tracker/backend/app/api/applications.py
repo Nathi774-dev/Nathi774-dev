@@ -6,8 +6,10 @@ from app.core.database import get_db
 from app.core.dependencies import get_current_user
 from app.schemas.application import ApplicationCreate, ApplicationResponse, ApplicationUpdate
 from app.services.application_service import ApplicationService
+from app.core.logger import get_logger
 
 router = APIRouter()
+logger = get_logger(__name__)
 
 # All routes here will be prefixed with /application
 # So we leave the first arguments with ""
@@ -17,15 +19,38 @@ def create_application(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    return ApplicationService.create_application(
+    result = ApplicationService.create_application(
         db,
         application_data.model_dump(),
         current_user.id
     )
     
+    logger.debug(f"Route result: {result}")
+    logger.debug(f"Route result dictionary: {result.__dict__}")
+    logger.debug(f"Route company: {result.company}")
+    logger.debug(f"Route company_name: {getattr(result, 'company_name', None)}")
+    
+    return result
+    
 @router.get("", response_model=list[ApplicationResponse], status_code=status.HTTP_200_OK)
-def get_applications(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
-    return ApplicationService.get_applications(db, current_user.id)
+def get_applications(
+    status: str | None = None,
+    search: str | None = None,
+    page: int = 1,
+    limit: int = 10,
+    sort: str = 'newest',
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    return ApplicationService.get_applications(
+        db,
+        current_user.id,
+        status,
+        search,
+        page,
+        limit,
+        sort
+    )
 
 @router.get("/{application_id}", response_model=ApplicationResponse, status_code=status.HTTP_200_OK)
 def get_application(
@@ -68,6 +93,8 @@ def delete_application(
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
+    logger.debug(f"Route application_id={application_id}, current_user_id: {current_user.id}")
+    
     deleted_content = ApplicationService.delete_application(
         db,
         application_id,

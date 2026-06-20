@@ -39,9 +39,21 @@ class Application(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow, onupdate=datetime.utcnow)
     
+    # deadline fields for applications
+    deadline: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    follow_up_date: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    
     notes: Mapped[str | None] = mapped_column(String(1000), nullable=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    # company_id: Mapped[int] = mapped_column(ForeignKey("companies.id"))
-    company_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    company_id: Mapped[int] = mapped_column(ForeignKey("companies.id"), nullable=False)
+    
     user = relationship("User", back_populates="applications")
-    # company = relationship("Company", back_populates="applications")
+    company = relationship("Company", back_populates="applications")
+    interviews = relationship("Interview", back_populates="application", cascade="all, delete-orphan")
+    
+    # A property to access the company's name
+    @property
+    def company_name(self) -> str:
+        return self.company.company_name
+    
+    

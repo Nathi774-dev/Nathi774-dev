@@ -7,6 +7,7 @@ def test_register_user(client):
         "password": "passcode345"
     })
     print(response.json())
+    print(response.status_code)
     
     assert response.status_code == 201
     

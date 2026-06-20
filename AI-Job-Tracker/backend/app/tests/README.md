@@ -390,3 +390,79 @@ app\core\config.py:3
 - [X] Updating the status of an application (Update)
 - [X] Deleting an application while it's not been reviewed (Delete)
 - [X] Testing routes with applications that have invalid tokens
+
+## Sixth Test
+platform win32 -- Python 3.11.6, pytest-9.1.0, pluggy-1.6.0 -- C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend
+configfile: pytest.ini
+plugins: anyio-4.13.0
+collected 5 items                                                                                                                     
+
+app/tests/test_application_filters.py::test_search_by_company PASSED                                                            [ 20%]
+app/tests/test_application_filters.py::test_paginate_applications PASSED                                                        [ 40%]
+app/tests/test_application_filters.py::test_second_page_applications PASSED                                                     [ 60%]
+app/tests/test_application_filters.py::test_search_by_status PASSED                                                             [ 80%]
+app/tests/test_application_filters.py::test_search_by_created_date PASSED                                                       [100%]
+
+========================================================== warnings summary ==========================================================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+app\core\config.py:3
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\app\core\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+
+## Checklist
+- [X] Page pagination
+- [X] Search terms for company names
+- [X] Filtering by time created
+
+## These are the final improvements for the backend
+Company:
+- create company
+- get companies
+- prevent users from accessing unrelated company applications
+
+Interview:
+- create interview for application
+- get interviews for application
+- update interview
+- delete interview
+
+Deadlines:
+- create application with deadline
+- get upcoming deadlines
+
+## This is the final test results for the backend API:
+
+============================= test session starts =============================
+platform win32 -- Python 3.11.6, pytest-9.1.0, pluggy-1.6.0
+rootdir: C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend
+configfile: pytest.ini
+plugins: anyio-4.13.0
+collected 6 items
+
+app\tests\test_applications.py Token created successfully
+.Token created successfully
+.Token created successfully
+.Token created successfully
+.Token created successfully
+..
+
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+app\core\config.py:3
+  C:\Programming\Web-development\full-stack-applications\AI-Job-Tracker\backend\app\core\config.py:3: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Settings(BaseSettings):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 6 passed, 2 warnings in 5.09s ========================
+
+## The API is officially complete with the documentation of the TDD process, if you want the dependencies for the project please find the requirements.txt file or the project.toml file
