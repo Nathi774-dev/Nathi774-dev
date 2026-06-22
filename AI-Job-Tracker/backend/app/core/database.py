@@ -18,7 +18,8 @@ def get_db():
     try:
         yield db
     except Exception as e:
-        pass
+        db.rollback()
+        raise
     finally:
         db.close()
     

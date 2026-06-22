@@ -5474,3 +5474,5 @@
 2026-06-20 09:38:03,866 | DEBUG | app.services.application_service | Application found for delete: <app.models.application.Application object at 0x000001C33DA33810>
 2026-06-20 09:38:03,877 | DEBUG | app.services.application_service | DELETE SUCCESS
 2026-06-20 09:38:03,892 | DEBUG | app.repos.application_repository | Get by user and id result: None
+2026-06-22 00:32:25,705 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 00:33:25,560 | DEBUG | app.services.application_service | Company Name: Google
