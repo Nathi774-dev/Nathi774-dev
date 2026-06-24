@@ -77,14 +77,17 @@ def update_application(
         db,
         application_id,
         current_user.id,
-        application_data.model_dump()
+        application_data.model_dump(exclude_unset=True)
     )
     
     if not application:
         raise HTTPException(
-            status=status.HTTP_404_NOT_FOUND,
+            status_code=status.HTTP_404_NOT_FOUND,
             detail="Application not found"
         )
+    
+    print("Update route app id: ", application_id)
+    print("Service update user id: ", current_user.id)
     return application
 
 @router.delete("/{application_id}", status_code=status.HTTP_204_NO_CONTENT)
@@ -97,8 +100,8 @@ def delete_application(
     
     deleted_content = ApplicationService.delete_application(
         db,
-        application_id,
-        current_user.id
+        current_user.id,
+        application_id
     )
     
     if not deleted_content:

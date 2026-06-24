@@ -67,6 +67,8 @@ class ApplicationService:
         if not application:
             return None
         
+        print("Service update app id: ", application_id)
+        print("Service update user id: ", user_id)
         return ApplicationRepository.update_application(db, application, update_data)
     
     @staticmethod

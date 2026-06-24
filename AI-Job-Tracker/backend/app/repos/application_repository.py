@@ -74,15 +74,24 @@ class ApplicationRepository:
         )
         
         logger.debug(f"Get by user and id result: {application}")
+        print("REPO LOOKUP APP ID: ", application_id)
+        print("REPO LOOKUP USER IS: ", user_id)
         return application
         
     @staticmethod
     def update_application(db: Session, application, update_data: dict):
+        company_name = update_data.pop("company_name", None)
+        if company_name:
+            company = CompanyRepository.get_by_name(db, company_name)
+            if not company:
+                company = CompanyRepository.create(db, company_name)
+            application.company_id = company.id
         for key, val in update_data.items():
             if val is not None:
                 setattr(application, key, val)
         db.commit()
-        db.refresh(application)
+        db.refresh(application)    
+            
         return application
     
     @staticmethod

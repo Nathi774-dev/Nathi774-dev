@@ -1,16 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Input from "../components/Input";
 
-function ApplicationForm({onSubmit}) {
-    const [form, setForm] = useState({
+function ApplicationForm({onSubmit, initialData}) {
+    // This is for editing the application
+    // by reusing the same form when you were applying
+    const emptyForm = {
         company_name: "",
         role: "",
         status: "applied",
         location: "",
         job_url: "",
-        notes: ""
-    });
+        notes: "",
+    }
+
+    const [form, setForm] = useState(initialData || emptyForm);
 
     function handleChange(e) {
         setForm({
@@ -31,6 +35,10 @@ function ApplicationForm({onSubmit}) {
             notes: ""
         });
     }
+
+    useEffect(() => {
+        setForm(initialData || emptyForm);
+    }, [initialData]);
 
     return (
         <form onSubmit={handleSubmit} className="grid">

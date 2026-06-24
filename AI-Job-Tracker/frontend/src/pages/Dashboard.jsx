@@ -1,6 +1,8 @@
+import StatusCard from "../components/StatusChart";
 import StatCard from "../components/Dashboard/StatsBar";
 import { useEffect, useState } from "react";
 import api from "../api/axios";
+import StatusPieChart from "../components/StatusPieChart";
 
 function Dashboard() {
     const [stats, setStats] = useState({
@@ -35,8 +37,13 @@ function Dashboard() {
                     <StatCard title="Offers" value={stats.offer} />
                     <StatCard title="Applied" value={stats.applied} />
                     <StatCard title="Interview" value={stats.interview} />
-                    <StatCard title="Total" value={stats.offer} />
+                    <StatCard title="Total" value={stats.total} />
+                    <StatCard title="Wishlist" value={stats.wishlist} />
+                    <StatCard title="Rejected" value={stats.rejected} />
                 </section>
+                {/* The graph layout underneath the stat cards */}
+                <StatusCard stats={stats} />
+                <StatusPieChart stats={stats} />
 
                 <section className="section card">
                     <h2 className="section-title">

@@ -12,6 +12,7 @@ function SideBar() {
             <nav className="sidebar-nav">
                 <NavItem to="/">Dashboard</NavItem>
                 <NavItem to="/applications">Applications</NavItem>
+                <NavItem to="/interviews">Interviews</NavItem>
             </nav>
 
             <button className="logout-btn" onClick={logout}>Logout</button>

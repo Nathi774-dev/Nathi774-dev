@@ -43,7 +43,9 @@
   --space-xl: 3rem;
 
   /* Animation */
-  --transition: .25s ease;
+  --transition: .2s ease;
+  --transform: translateY(-3px);
+  --mini-transform: translateY(-1px);
 }
 
 * {
@@ -417,4 +419,113 @@ button {
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
+}
+
+.btn-small {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.45rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-small.danger {
+  background: rgba(239, 68, 68, 0.18);
+  color: #fca5a5;
+}
+
+.btn-small:hover {
+  transform: var(--transform);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn-small:active {
+  transform: var(--mini-transform);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn-small.danger:hover {
+  background: rgba(239, 68, 68, 0.28);
+}
+
+/* Styles for the pop up card for deleting applications */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 6, 23, 0.75);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  padding: var(--space-sm);
+}
+
+.modal-card {
+  width: min(420px, 100%);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-card h2 {
+  margin: 0 0 0.5rem;
+}
+
+.modal-card p {
+  color: var(--text-secondary);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.toast {
+  position: fixed;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  min-width: 320px;
+  padding: var(--space-sm) 1.25rem;
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideIn .3s ease;
+}
+
+.toast.success {
+  background: #16a34a;
+}
+
+.toast.error {
+  background: #dc2626;
+}
+
+.toast.info {
+  background: #2563eb;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* These styles are for the graph layout of the dashboard */
+.chart-card {
+  margin-top: var(--space-lg);
+}
+
+.chart-container {
+  width: 100%;
+  height: 320px;
 }

@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Applications from "./pages/Applications";
+import Interviews from "./pages/Interviews";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -33,6 +34,18 @@ export default function App() {
                         <ProtectedRoute>
                             <Layout>
                                 <Applications />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* This route is for scheduling the interviews */}
+                <Route 
+                    path="/interviews"
+                    element={
+                        <ProtectedRoute>
+                            <Layout>
+                                <Interviews />
                             </Layout>
                         </ProtectedRoute>
                     }

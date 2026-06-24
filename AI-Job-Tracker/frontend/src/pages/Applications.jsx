@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import ApplicationForm from "./ApplicationForm";
+import {useToast} from "../context/ToastContext";
 
 function Applications() {
     const [applications, setApplications] = useState([]);
@@ -9,6 +10,9 @@ function Applications() {
     const [isLoading, setIsLoading] = useState(false);
     const [status, setStatus] = useState("");
     const [showForm, setShowForm] = useState(false);
+    const [deleteId, setDeleteId] = useState(null);
+    const [editingApplication, setEditingApplication] = useState(null);
+    const {showToast} = useToast();
 
     const fetchApplications = async () => {
         setIsLoading(true);
@@ -33,8 +37,43 @@ function Applications() {
             await api.post("/applications", applicationData);
             setShowForm(false);
             fetchApplications();
+            showToast("Application created succesfully");
         } catch (err) {
             console.error(err);
+            showToast("An error has occured, failed to create application", "error");
+        }
+    }
+
+    const handleEdit = (app) => {
+        setEditingApplication(app);
+        setShowForm(true);
+    }
+
+    const updateApplication = async (appData) => {
+        try {
+            await api.patch(`/applications/${editingApplication.id}`, appData);
+            console.log("THE APP DATA: ", appData);
+            
+            setEditingApplication(null);
+            setShowForm(false);
+            fetchApplications();
+            showToast("Account succssfully changed");
+        } catch (err) {
+            console.error("Failed to update application: ", err);
+            showToast("Failed to update application details")
+        }
+    }
+
+    const deleteApplications = async () => {
+
+        try {
+            await api.delete(`/applications/${deleteId}`);
+            setDeleteId(null);
+            fetchApplications();
+            showToast("Successfully deleted application");
+        } catch (err) {
+            console.error("Could not delete application: ", err);
+            showToast("Application coul not be deleted");
         }
     }
 
@@ -87,7 +126,10 @@ function Applications() {
                     {/* Render the Form if user press the add application button */}
                     {showForm && (
                         <section className="card section">
-                            <ApplicationForm onSubmit={createApplication} />
+                            <ApplicationForm 
+                                onSubmit={editingApplication ? updateApplication : createApplication}
+                                initialData={editingApplication}
+                            />
                         </section>
                     )}
 
@@ -105,6 +147,7 @@ function Applications() {
                                     <th>Role</th>
                                     <th>Status</th>
                                     <th>Location</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -118,6 +161,16 @@ function Applications() {
                                             </span>
                                         </td>
                                         <td>{application.location || "No location provided"}</td>
+                                        <td>
+                                            <button
+                                                className="btn-small"
+                                                onClick={() => handleEdit(application)}
+                                            >Edit</button>
+                                            <button
+                                                className="btn-small danger"
+                                                onClick={() => setDeleteId(application.id)}
+                                            >Delete</button>
+                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -125,6 +178,29 @@ function Applications() {
                     )}
                 </section>
             </div>
+            {/* This feature allows the user th delete an application */}
+            {deleteId && (
+                <div className="modal-overlay">
+                    <div className="modal-card">
+                        <h2>Delete Application?</h2>
+                        <p>This action cannot be undone.</p>
+                        <div className="modal-actions">
+                            <button
+                                className="btn-small"
+                                onClick={() => setDeleteId(null)}
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                className="btn-small danger"
+                                onClick={deleteApplications}
+                            >
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </main>
     )
 }

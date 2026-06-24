@@ -5476,3 +5476,220 @@
 2026-06-20 09:38:03,892 | DEBUG | app.repos.application_repository | Get by user and id result: None
 2026-06-22 00:32:25,705 | DEBUG | app.services.application_service | Company Name: Google
 2026-06-22 00:33:25,560 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 21:00:30,155 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 21:17:35,580 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 21:17:35,586 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 21:17:35,586 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 21:17:35,606 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 21:17:35,619 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 21:17:35,619 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 21:18:36,686 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 21:18:36,700 | DEBUG | app.services.application_service | Company Found: None
+2026-06-22 21:18:36,713 | DEBUG | app.services.application_service | company CREATED: ID is 1, name=Google
+2026-06-22 21:18:36,713 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Software Developer', 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'job_url': 'https://linkedin.com', 'notes': 'THIS IS A JOB APPLICATION', 'company_id': 1, 'user_id': 1}
+2026-06-22 21:18:36,713 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x000002037DB33FD0>
+2026-06-22 21:18:36,715 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-22 21:18:36,727 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x000002037DB33FD0>
+2026-06-22 21:18:36,730 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x000002037DB0C310>
+2026-06-22 21:18:36,730 | DEBUG | app.repos.application_repository | company name after refresh: Google
+2026-06-22 21:18:36,730 | DEBUG | app.services.application_service | Application company ID: 1
+2026-06-22 21:18:36,730 | DEBUG | app.services.application_service | Application name attr: Google
+2026-06-22 21:18:36,730 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x000002037DB33FD0>
+2026-06-22 21:18:36,730 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x000002037DB11E50>, 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'created_at': datetime.datetime(2026, 6, 22, 19, 18, 36, 715290, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'THIS IS A JOB APPLICATION', 'company_id': 1, 'role': 'Software Developer', 'id': 1, 'job_url': 'https://linkedin.com', 'updated_at': datetime.datetime(2026, 6, 22, 19, 18, 36, 715290, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 1, 'company': <app.models.company.Company object at 0x000002037DB0C310>}
+2026-06-22 21:18:36,730 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x000002037DB0C310>
+2026-06-22 21:18:36,730 | DEBUG | app.api.applications | Route company_name: Google
+2026-06-22 21:18:36,778 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 21:18:36,778 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 21:18:36,786 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 21:39:17,564 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 21:39:17,564 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 21:39:17,564 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 21:39:17,605 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 21:39:17,605 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 21:39:17,614 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 21:58:47,754 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 21:58:47,761 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 21:58:47,766 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 21:58:47,826 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 21:58:47,828 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 21:58:47,828 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 21:59:55,542 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 21:59:55,543 | DEBUG | app.services.application_service | Company Found: <app.models.company.Company object at 0x000002037DB40110>
+2026-06-22 21:59:55,543 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Software Developer', 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'job_url': 'https://linkedin.com', 'notes': 'This is just a job application', 'company_id': 1, 'user_id': 2}
+2026-06-22 21:59:55,543 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x000002037DB4FB50>
+2026-06-22 21:59:55,543 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-22 21:59:55,559 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x000002037DB4FB50>
+2026-06-22 21:59:55,559 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x000002037DB40110>
+2026-06-22 21:59:55,559 | DEBUG | app.repos.application_repository | company name after refresh: Google
+2026-06-22 21:59:55,559 | DEBUG | app.services.application_service | Application company ID: 1
+2026-06-22 21:59:55,559 | DEBUG | app.services.application_service | Application name attr: Google
+2026-06-22 21:59:55,559 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x000002037DB4FB50>
+2026-06-22 21:59:55,559 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x000002037DB133B0>, 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'created_at': datetime.datetime(2026, 6, 22, 19, 59, 55, 551104, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'This is just a job application', 'company_id': 1, 'role': 'Software Developer', 'id': 2, 'job_url': 'https://linkedin.com', 'updated_at': datetime.datetime(2026, 6, 22, 19, 59, 55, 551104, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 2, 'company': <app.models.company.Company object at 0x000002037DB40110>}
+2026-06-22 21:59:55,559 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x000002037DB40110>
+2026-06-22 21:59:55,559 | DEBUG | app.api.applications | Route company_name: Google
+2026-06-22 21:59:55,611 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 21:59:55,619 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 21:59:55,622 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:06:59,381 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 22:06:59,384 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 22:06:59,386 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:29:39,908 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 22:29:39,908 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 22:29:39,908 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:29:39,936 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 22:29:39,943 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 22:29:39,946 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:37:03,947 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 22:37:03,947 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 22:37:03,953 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:37:03,967 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 22:37:03,969 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 22:37:03,973 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 22:46:36,047 | DEBUG | app.api.applications | Route application_id=2, current_user_id: 2
+2026-06-22 22:46:36,071 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000002037DAF88D0>
+2026-06-22 22:46:36,071 | DEBUG | app.services.application_service | Application found for delete: <app.models.application.Application object at 0x000002037DAF88D0>
+2026-06-22 22:46:36,113 | DEBUG | app.services.application_service | DELETE SUCCESS
+2026-06-22 22:46:36,169 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 22:46:36,169 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 22:46:36,177 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 23:56:54,203 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 23:56:54,207 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 23:56:54,207 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 23:56:54,222 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-22 23:56:54,224 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-22 23:56:54,224 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-22 23:57:34,185 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-22 23:57:34,193 | DEBUG | app.services.application_service | Company Found: <app.models.company.Company object at 0x000002037DB7B250>
+2026-06-22 23:57:34,193 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Software Developer', 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'job_url': 'https://linkedin.com', 'notes': "Hello there, I'm just a test", 'company_id': 1, 'user_id': 2}
+2026-06-22 23:57:34,193 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x000002037DB6D690>
+2026-06-22 23:57:34,195 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-22 23:57:34,210 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x000002037DB6D690>
+2026-06-22 23:57:34,210 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x000002037DB7B250>
+2026-06-22 23:57:34,210 | DEBUG | app.repos.application_repository | company name after refresh: Google
+2026-06-22 23:57:34,210 | DEBUG | app.services.application_service | Application company ID: 1
+2026-06-22 23:57:34,210 | DEBUG | app.services.application_service | Application name attr: Google
+2026-06-22 23:57:34,210 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x000002037DB6D690>
+2026-06-22 23:57:34,210 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x000002037DB70530>, 'status': <ApplicationStatus.APPLIED: 'applied'>, 'location': 'Remote, USA', 'created_at': datetime.datetime(2026, 6, 22, 21, 57, 34, 200456, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': "Hello there, I'm just a test", 'company_id': 1, 'role': 'Software Developer', 'id': 3, 'job_url': 'https://linkedin.com', 'updated_at': datetime.datetime(2026, 6, 22, 21, 57, 34, 200456, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 2, 'company': <app.models.company.Company object at 0x000002037DB7B250>}
+2026-06-22 23:57:34,210 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x000002037DB7B250>
+2026-06-22 23:57:34,210 | DEBUG | app.api.applications | Route company_name: Google
+2026-06-22 23:57:34,245 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-22 23:57:34,254 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-22 23:57:34,254 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-22 23:57:44,963 | DEBUG | app.api.applications | Route application_id=3, current_user_id: 2
+2026-06-22 23:57:44,967 | DEBUG | app.repos.application_repository | Get by user and id result: None
+2026-06-22 23:57:44,967 | DEBUG | app.services.application_service | Application found for delete: None
+2026-06-22 23:57:44,967 | DEBUG | app.services.application_service | DELETE FAILED: application not found
+2026-06-23 10:28:19,577 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 10:28:19,585 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 10:28:19,599 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 10:28:19,632 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 10:28:19,640 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 10:28:19,644 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 10:28:35,254 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000002205DEAAC50>
+2026-06-23 10:29:30,248 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000002205DE9B250>
+2026-06-23 16:13:41,422 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:13:41,422 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:13:41,440 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:13:41,463 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:13:41,465 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:13:41,468 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:14:06,609 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001CF6FEF0910>
+2026-06-23 16:14:28,344 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001CF7002F6D0>
+2026-06-23 16:19:56,862 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:19:56,873 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:19:56,888 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:19:56,934 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:19:56,947 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:19:56,951 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:20:19,854 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000002516CF2BD10>
+2026-06-23 16:29:17,794 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:29:17,798 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:29:17,810 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:29:17,835 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:29:17,843 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:29:17,847 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:30:12,932 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x00000217EDFAC610>
+2026-06-23 16:58:50,339 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:58:50,339 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:58:50,358 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 16:58:50,382 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-23 16:58:50,395 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-23 16:58:50,399 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-23 17:01:28,859 | DEBUG | app.services.application_service | Company Name: Oracle
+2026-06-23 17:01:28,869 | DEBUG | app.services.application_service | Company Found: None
+2026-06-23 17:01:28,884 | DEBUG | app.services.application_service | company CREATED: ID is 3, name=Oracle
+2026-06-23 17:01:28,884 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Cloud Engineer', 'status': <ApplicationStatus.INTERVIEW: 'interview'>, 'location': '', 'job_url': '', 'notes': 'This job is for a month, a winter job.', 'company_id': 3, 'user_id': 1}
+2026-06-23 17:01:28,884 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x00000201F8D81E50>
+2026-06-23 17:01:28,884 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-23 17:01:28,903 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x00000201F8D81E50>
+2026-06-23 17:01:28,903 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x00000201F8B95150>
+2026-06-23 17:01:28,903 | DEBUG | app.repos.application_repository | company name after refresh: Oracle
+2026-06-23 17:01:28,903 | DEBUG | app.services.application_service | Application company ID: 3
+2026-06-23 17:01:28,903 | DEBUG | app.services.application_service | Application name attr: Oracle
+2026-06-23 17:01:28,903 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x00000201F8D81E50>
+2026-06-23 17:01:28,903 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x00000201F8DCC3B0>, 'status': <ApplicationStatus.INTERVIEW: 'interview'>, 'location': '', 'created_at': datetime.datetime(2026, 6, 23, 15, 1, 28, 886085, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'This job is for a month, a winter job.', 'company_id': 3, 'role': 'Cloud Engineer', 'id': 4, 'job_url': '', 'updated_at': datetime.datetime(2026, 6, 23, 15, 1, 28, 886085, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 1, 'company': <app.models.company.Company object at 0x00000201F8B95150>}
+2026-06-23 17:01:28,903 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x00000201F8B95150>
+2026-06-23 17:01:28,903 | DEBUG | app.api.applications | Route company_name: Oracle
+2026-06-23 17:01:28,937 | DEBUG | app.repos.application_repository | Base count: 2
+2026-06-23 17:01:28,945 | DEBUG | app.repos.application_repository | Final result count: 2
+2026-06-23 17:01:28,955 | DEBUG | app.repos.application_repository | Final results: ['Oracle', 'Google']
+2026-06-23 17:02:19,704 | DEBUG | app.repos.application_repository | Base count: 2
+2026-06-23 17:02:19,709 | DEBUG | app.repos.application_repository | Final result count: 2
+2026-06-23 17:02:19,713 | DEBUG | app.repos.application_repository | Final results: ['Oracle', 'Google']
+2026-06-23 17:02:19,729 | DEBUG | app.repos.application_repository | Base count: 2
+2026-06-23 17:02:19,731 | DEBUG | app.repos.application_repository | Final result count: 2
+2026-06-23 17:02:19,737 | DEBUG | app.repos.application_repository | Final results: ['Oracle', 'Google']
+2026-06-23 17:03:47,929 | DEBUG | app.services.application_service | Company Name: Sage
+2026-06-23 17:03:47,929 | DEBUG | app.services.application_service | Company Found: None
+2026-06-23 17:03:47,945 | DEBUG | app.services.application_service | company CREATED: ID is 4, name=Sage
+2026-06-23 17:03:47,945 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Chief AI Officer', 'status': <ApplicationStatus.OFFER: 'offer'>, 'location': 'Gauteng Johannesburg', 'job_url': '', 'notes': 'This application is a temporary full-time job.', 'company_id': 4, 'user_id': 1}
+2026-06-23 17:03:47,945 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x00000201F8C39890>
+2026-06-23 17:03:47,947 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-23 17:03:47,956 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x00000201F8C39890>
+2026-06-23 17:03:47,956 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x00000201F8B15450>
+2026-06-23 17:03:47,956 | DEBUG | app.repos.application_repository | company name after refresh: Sage
+2026-06-23 17:03:47,956 | DEBUG | app.services.application_service | Application company ID: 4
+2026-06-23 17:03:47,956 | DEBUG | app.services.application_service | Application name attr: Sage
+2026-06-23 17:03:47,956 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x00000201F8C39890>
+2026-06-23 17:03:47,956 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x00000201F8DCE330>, 'status': <ApplicationStatus.OFFER: 'offer'>, 'location': 'Gauteng Johannesburg', 'created_at': datetime.datetime(2026, 6, 23, 15, 3, 47, 949518, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'This application is a temporary full-time job.', 'company_id': 4, 'role': 'Chief AI Officer', 'id': 5, 'job_url': '', 'updated_at': datetime.datetime(2026, 6, 23, 15, 3, 47, 949518, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 1, 'company': <app.models.company.Company object at 0x00000201F8B15450>}
+2026-06-23 17:03:47,956 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x00000201F8B15450>
+2026-06-23 17:03:47,956 | DEBUG | app.api.applications | Route company_name: Sage
+2026-06-23 17:03:47,985 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:03:47,991 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:03:47,999 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:05:14,269 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x00000201F9164D50>
+2026-06-23 17:19:52,982 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:19:52,986 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:19:52,994 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:19:53,010 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:19:53,014 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:19:53,022 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:50:10,845 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:50:10,855 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:50:10,868 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:50:10,884 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:50:10,888 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:50:10,894 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:50:35,478 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x0000018AB3DE0990>
+2026-06-23 17:52:11,363 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:52:11,379 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:52:11,388 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:52:11,406 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:52:11,410 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:52:11,416 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:52:23,458 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001B396FBB490>
+2026-06-23 17:52:23,552 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:52:23,554 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:52:23,566 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:53:50,136 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:53:50,141 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:53:50,156 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:53:50,183 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:53:50,185 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:53:50,193 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:59:52,867 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:59:52,868 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:59:52,876 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-23 17:59:53,033 | DEBUG | app.repos.application_repository | Base count: 3
+2026-06-23 17:59:53,040 | DEBUG | app.repos.application_repository | Final result count: 3
+2026-06-23 17:59:53,051 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
