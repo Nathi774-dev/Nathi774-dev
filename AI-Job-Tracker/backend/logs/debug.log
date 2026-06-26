@@ -5789,3 +5789,38 @@
 2026-06-26 09:43:06,749 | DEBUG | app.repos.application_repository | Final result count: 1
 2026-06-26 09:43:06,759 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
 2026-06-26 09:44:11,456 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001AECCC5C6D0>
+2026-06-26 20:20:41,298 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-26 20:20:41,307 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-26 20:20:41,307 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-26 20:20:41,340 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-26 20:20:41,350 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-26 20:20:41,352 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-26 20:21:35,975 | DEBUG | app.services.application_service | Company Name: Google
+2026-06-26 20:21:36,000 | DEBUG | app.services.application_service | Company Found: None
+2026-06-26 20:21:36,020 | DEBUG | app.services.application_service | company CREATED: ID is 2, name=Google
+2026-06-26 20:21:36,020 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Entry level Software Engineer', 'status': <ApplicationStatus.WISHLIST: 'wishlist'>, 'location': 'Remote, UK', 'job_url': 'https://linkedin.com', 'notes': 'This is a temporary job position', 'company_id': 2, 'user_id': 3}
+2026-06-26 20:21:36,020 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x0000017E7063F310>
+2026-06-26 20:21:36,020 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-26 20:21:36,044 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x0000017E7063F310>
+2026-06-26 20:21:36,049 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x0000017E7063D490>
+2026-06-26 20:21:36,051 | DEBUG | app.repos.application_repository | company name after refresh: Google
+2026-06-26 20:21:36,051 | DEBUG | app.services.application_service | Application company ID: 2
+2026-06-26 20:21:36,051 | DEBUG | app.services.application_service | Application name attr: Google
+2026-06-26 20:21:36,051 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x0000017E7063F310>
+2026-06-26 20:21:36,051 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x0000017E70649070>, 'id': 2, 'status': <ApplicationStatus.WISHLIST: 'wishlist'>, 'job_url': 'https://linkedin.com', 'updated_at': datetime.datetime(2026, 6, 26, 18, 21, 36, 26046, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 3, 'role': 'Entry level Software Engineer', 'location': 'Remote, UK', 'created_at': datetime.datetime(2026, 6, 26, 18, 21, 36, 26046, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'This is a temporary job position', 'company_id': 2, 'company': <app.models.company.Company object at 0x0000017E7063D490>}
+2026-06-26 20:21:36,051 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x0000017E7063D490>
+2026-06-26 20:21:36,051 | DEBUG | app.api.applications | Route company_name: Google
+2026-06-26 20:21:36,159 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 20:21:36,161 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 20:21:36,190 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-26 20:21:51,338 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x0000017E7068CD10>
+2026-06-26 20:21:51,518 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 20:21:51,521 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 20:21:51,525 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-26 20:21:54,861 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 20:21:54,866 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 20:21:54,868 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-26 20:21:55,002 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 20:21:55,031 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 20:21:55,031 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-26 20:22:38,290 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x0000017E70695D10>
