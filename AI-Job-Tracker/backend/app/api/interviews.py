@@ -31,14 +31,14 @@ def create_interview(
         )
     return interview
 
-@router.get("", response_model=InterviewResponse, status_code=status.HTTP_200_OK)
+@router.get("", response_model=list[InterviewResponse], status_code=status.HTTP_200_OK)
 def get_interviews(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     return InterviewService.get_interviews(
         db,
         current_user.id
     )
     
-@router.get("/{interview_id}", response_model=InterviewResponse)
+@router.get("/{interview_id}", response_model=InterviewResponse, status_code=status.HTTP_200_OK)
 def get_interview(
     interview_id: int, 
     db: Session = Depends(get_db), 
@@ -56,7 +56,7 @@ def get_interview(
         )
     return interview
 
-@router.path("/{interview_id}", response_model=InterviewResponse)
+@router.patch("/{interview_id}", response_model=InterviewResponse)
 def update_interview(
     interview_id: int,
     interview_data: InterviewUpdate,
@@ -78,7 +78,7 @@ def update_interview(
         
     return interview
 
-@router.delete("{interview_id}", response_model=InterviewResponse, status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{interview_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_interview(
     interview_id: int, 
     db: Session = Depends(get_db), 

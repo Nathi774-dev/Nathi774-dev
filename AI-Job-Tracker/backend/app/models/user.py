@@ -12,9 +12,12 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(255), unique=True, index=True, nullable=False)
     password_hash: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=datetime.utcnow)
+    
+    # Connecting other models to User
     applications: Mapped[list["Application"]] = relationship(
         back_populates="user",
         cascade="all, delete-orphan"
     )
+    documents = relationship("Document", back_populates="user", cascade="all, delete-orphan")
     
     

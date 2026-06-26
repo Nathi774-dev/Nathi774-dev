@@ -5693,3 +5693,99 @@
 2026-06-23 17:59:53,033 | DEBUG | app.repos.application_repository | Base count: 3
 2026-06-23 17:59:53,040 | DEBUG | app.repos.application_repository | Final result count: 3
 2026-06-23 17:59:53,051 | DEBUG | app.repos.application_repository | Final results: ['Sage', 'Oracle', 'Google']
+2026-06-24 23:16:57,496 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-24 23:16:57,510 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-24 23:16:57,510 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-24 23:16:57,554 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-24 23:16:57,556 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-24 23:16:57,556 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:21:39,534 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:21:39,546 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:21:39,550 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:21:39,707 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:21:39,710 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:21:39,710 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:22:13,825 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:22:13,828 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:22:13,830 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:22:13,871 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:22:13,873 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:22:13,873 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:22:18,595 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:22:18,600 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:22:18,600 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 21:22:18,618 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 21:22:18,624 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 21:22:18,624 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 23:20:57,794 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 23:20:57,803 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 23:20:57,803 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 23:20:57,823 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 23:20:57,824 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 23:20:57,826 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 23:21:05,146 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 23:21:05,148 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 23:21:05,150 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 23:21:05,172 | DEBUG | app.repos.application_repository | Base count: 0
+2026-06-25 23:21:05,175 | DEBUG | app.repos.application_repository | Final result count: 0
+2026-06-25 23:21:05,177 | DEBUG | app.repos.application_repository | Final results: []
+2026-06-25 23:22:30,930 | DEBUG | app.services.application_service | Company Name: Ubisoft
+2026-06-25 23:22:30,945 | DEBUG | app.services.application_service | Company Found: None
+2026-06-25 23:22:30,977 | DEBUG | app.services.application_service | company CREATED: ID is 1, name=Ubisoft
+2026-06-25 23:22:30,977 | DEBUG | app.services.application_service | FINAL APPLICATION DATA: {'role': 'Lead Game Designer', 'status': <ApplicationStatus.INTERVIEW: 'interview'>, 'location': 'Sweden', 'job_url': '', 'notes': 'This is a lead game designer role for an entry level director.', 'company_id': 1, 'user_id': 2}
+2026-06-25 23:22:30,977 | DEBUG | app.repos.application_repository | Repository application before add: <app.models.application.Application object at 0x00000149C064DCD0>
+2026-06-25 23:22:30,977 | DEBUG | app.repos.application_repository | has company_name property: False
+2026-06-25 23:22:31,011 | DEBUG | app.repos.application_repository | Repository application after refresh: <app.models.application.Application object at 0x00000149C064DCD0>
+2026-06-25 23:22:31,016 | DEBUG | app.repos.application_repository | Company relation refresh after refresh: <app.models.company.Company object at 0x00000149C08C7850>
+2026-06-25 23:22:31,016 | DEBUG | app.repos.application_repository | company name after refresh: Ubisoft
+2026-06-25 23:22:31,016 | DEBUG | app.services.application_service | Application company ID: 1
+2026-06-25 23:22:31,016 | DEBUG | app.services.application_service | Application name attr: Ubisoft
+2026-06-25 23:22:31,016 | DEBUG | app.api.applications | Route result: <app.models.application.Application object at 0x00000149C064DCD0>
+2026-06-25 23:22:31,016 | DEBUG | app.api.applications | Route result dictionary: {'_sa_instance_state': <sqlalchemy.orm.state.InstanceState object at 0x00000149C0F447D0>, 'id': 1, 'role': 'Lead Game Designer', 'status': <ApplicationStatus.INTERVIEW: 'interview'>, 'created_at': datetime.datetime(2026, 6, 25, 21, 22, 30, 977078, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'follow_up_date': None, 'user_id': 2, 'location': 'Sweden', 'job_url': '', 'updated_at': datetime.datetime(2026, 6, 25, 21, 22, 30, 977078, tzinfo=zoneinfo.ZoneInfo(key='Africa/Johannesburg')), 'deadline': None, 'notes': 'This is a lead game designer role for an entry level director.', 'company_id': 1, 'company': <app.models.company.Company object at 0x00000149C08C7850>}
+2026-06-25 23:22:31,016 | DEBUG | app.api.applications | Route company: <app.models.company.Company object at 0x00000149C08C7850>
+2026-06-25 23:22:31,016 | DEBUG | app.api.applications | Route company_name: Ubisoft
+2026-06-25 23:22:31,074 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-25 23:22:31,078 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-25 23:22:31,081 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-25 23:22:37,143 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-25 23:22:37,147 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-25 23:22:37,149 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-25 23:22:37,170 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-25 23:22:37,172 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-25 23:22:37,175 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-25 23:24:16,983 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x00000149C0F776D0>
+2026-06-25 23:32:42,917 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x00000227889CA750>
+2026-06-25 23:59:22,765 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-25 23:59:22,771 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-25 23:59:22,797 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-25 23:59:22,839 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-25 23:59:22,843 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-25 23:59:22,845 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 00:01:18,676 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x0000025106E42190>
+2026-06-26 00:53:06,650 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 00:53:06,658 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 00:53:06,672 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 00:53:06,894 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 00:53:06,897 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 00:53:06,899 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 00:53:57,660 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001957C4C1610>
+2026-06-26 01:05:08,506 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 01:05:08,512 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 01:05:08,524 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 01:05:08,639 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 01:05:08,642 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 01:05:08,647 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 01:05:14,605 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 01:05:14,610 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 01:05:14,618 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 01:05:14,634 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 01:05:14,641 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 01:05:14,643 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 01:05:58,939 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001CEDFBD3E10>
+2026-06-26 09:43:06,707 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 09:43:06,707 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 09:43:06,725 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 09:43:06,746 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-26 09:43:06,749 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-26 09:43:06,759 | DEBUG | app.repos.application_repository | Final results: ['Ubisoft']
+2026-06-26 09:44:11,456 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x000001AECCC5C6D0>

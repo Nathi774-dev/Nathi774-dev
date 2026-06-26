@@ -1,13 +1,21 @@
+// necessary for url routes
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// reusable components
 import Layout from "./components/Layout";
+
+// webpages
+import Documents from "./pages/Documents";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 import Applications from "./pages/Applications";
 import Interviews from "./pages/Interviews";
+import CalendarPage from "./pages/Calendar";
 
+// protecting routes with Authorization
+// prventing logged out users from accessing these routes
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
@@ -46,6 +54,29 @@ export default function App() {
                         <ProtectedRoute>
                             <Layout>
                                 <Interviews />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* This route is for uploading resumes */}
+                <Route 
+                    path="/documents"
+                    element={
+                        <ProtectedRoute>
+                            <Layout>
+                                <Documents />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route 
+                    path="/calendar"
+                    element={
+                        <ProtectedRoute>
+                            <Layout>
+                                <CalendarPage />
                             </Layout>
                         </ProtectedRoute>
                     }
