@@ -13,15 +13,29 @@ import imaeapiPic1 from "../assets/images/WebDev/Screenshot (44).png";
 import imaeapiPic2 from "../assets/images/WebDev/Screenshot (45).png";
 import imaeapiPic3 from "../assets/images/WebDev/Screenshot (46).png";
 
+// The AI Job tracker (SaaS application)
+import aiJobTrackerVid from "../assets/Videos/WebDev";
+import jobTrackerPic1 from "../assets/images/WebDev";
+import jobTrackerPic2 from "../assets/images/WebDev";
+import jobTrackerPic3 from "../assets/images/WebDev";
+
 function WebDev(){
     const projects = [
         {
             title: "Image uploading API",
             desc: "An API that allows the user to upload save and delete video and image files.",
-            link: "https://github.com/Nathi774-dev/Nathi774-dev.git",
-            tech: ["Python", "FastAPI"],
+            link: "https://github.com/Nathi774-dev/Nathi774-dev/tree/web-development/ImageAPI-Project",
+            tech: ["Python", "FastAPI", "HTML"],
             video: imageapiVid,
             gallery: [imaeapiPic1, imaeapiPic2, imaeapiPic3]
+        },
+        {
+            title:"AI Job Tracker",
+            desc: "I developed my first SaaS application project with AI integration, it tracks job applications",
+            link: "https://github.com/Nathi774-dev/Nathi774-dev/tree/web-development/AI-Job-Tracker",
+            tech: ["Python","FastAPI", "PostgresSQL", "AI Integration", "React"],
+            video: aiJobTrackerVid,
+            gallery: [jobTrackerPic1, jobTrackerPic2, jobTrackerPic3]
         }
     ];
 

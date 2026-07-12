@@ -21,7 +21,7 @@ function Cards(){
             title: "Robotics Building",
             description: "I combine computer science, mechanical and electrical engineering to make smart machines",
             icon: robotIcon,
-            route: "/robots",
+            route: "/robotics",
             glow: "hover:shadow-orange-500/20"
         },
         {
