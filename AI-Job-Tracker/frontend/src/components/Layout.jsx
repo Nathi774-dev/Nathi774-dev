@@ -1,12 +1,13 @@
-import NavBar from "./Dashboard/NavBar";
-import SideBar from "./Dashboard/SideBar";
+import Navigation from "./Navigation/Navigation";
+import { useAuth } from "../context/AuthContext";
 
 function Layout({children}) {
+    const { logout } = useAuth();
+
     return (
         <div className="app-shell">
-            <SideBar />
+            <Navigation onLogout={logout} />
             <div className="app-main">
-                <NavBar />
                 {children}
             </div>
         </div>

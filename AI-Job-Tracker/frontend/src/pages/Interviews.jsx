@@ -112,7 +112,23 @@ function Intervew(){
                                     {interviews.map((interview) => (
                                         <tr key={interview.id}>
                                             <td>{interview.title}</td>
-                                            <td>{interview.interview_date}</td>
+                                            <td>
+                                                <div className="interview-date">
+                                                    <strong>
+                                                        {new Date(interview.interview_date).toLocaleString("en-ZA", {
+                                                            day: "numeric",
+                                                            month: "long",
+                                                            year: "numeric", 
+                                                        })}
+                                                    </strong>
+                                                    <small>
+                                                        {new Date(interview.interview_date).toLocaleString("en-ZA", {
+                                                            hour: "2-digit",
+                                                            minute: "2-digit"
+                                                        })}
+                                                    </small>
+                                                </div>
+                                            </td>
                                             <td>{interview.interview_type}</td>
                                             <td>{interview.status}</td>
                                             <td>{interview.notes || "-"}</td>

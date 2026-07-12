@@ -17,6 +17,7 @@ import CalendarPage from "./pages/Calendar";
 // protecting routes with Authorization
 // prventing logged out users from accessing these routes
 import ProtectedRoute from "./routes/ProtectedRoute";
+import MockInterview from "./pages/MockInterview";
 
 export default function App() {
     return (
@@ -66,6 +67,18 @@ export default function App() {
                         <ProtectedRoute>
                             <Layout>
                                 <Documents />
+                            </Layout>
+                        </ProtectedRoute>
+                    }
+                />
+
+                {/* The first AI route */}
+                <Route 
+                    path="/mock-interview"
+                    element={
+                        <ProtectedRoute>
+                            <Layout>
+                                <MockInterview />
                             </Layout>
                         </ProtectedRoute>
                     }

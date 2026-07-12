@@ -5824,3 +5824,117 @@
 2026-06-26 20:21:55,031 | DEBUG | app.repos.application_repository | Final result count: 1
 2026-06-26 20:21:55,031 | DEBUG | app.repos.application_repository | Final results: ['Google']
 2026-06-26 20:22:38,290 | DEBUG | app.repos.application_repository | Get by user and id result: <app.models.application.Application object at 0x0000017E70695D10>
+2026-06-28 15:42:55,892 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:42:55,898 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:42:55,915 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:42:55,950 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:42:55,950 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:42:55,956 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:45:55,938 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:45:55,944 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:45:55,948 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:45:56,032 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:45:56,034 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:45:56,038 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:20,986 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:20,988 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:20,990 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:21,123 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:21,125 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:21,129 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:23,889 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:23,891 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:23,895 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:23,973 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:23,979 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:23,985 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:25,684 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:25,687 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:25,692 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:25,740 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:25,745 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:25,746 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:33,667 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:33,674 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:33,677 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:49:33,725 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:49:33,727 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:49:33,729 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:50:05,816 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:50:05,820 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:50:05,822 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:50:05,912 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:50:05,918 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:50:05,920 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:51:02,010 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:51:02,012 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:51:02,018 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 15:51:02,198 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 15:51:02,200 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 15:51:02,202 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:44:40,283 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:44:40,285 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:44:40,290 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:44:40,370 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:44:40,374 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:44:40,383 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:39,783 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:39,789 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:39,794 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:39,815 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:39,817 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:39,818 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:42,706 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:42,710 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:42,712 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:42,765 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:42,769 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:42,774 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:48,655 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:48,657 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:48,659 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:48,720 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:48,723 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:48,726 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:53,660 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:53,664 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:53,666 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:49:53,703 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:49:53,707 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:49:53,709 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:50:14,246 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:50:14,251 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:50:14,253 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:50:14,323 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:50:14,327 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:50:14,329 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:50:29,672 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:50:29,675 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:50:29,677 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:50:29,724 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:50:29,728 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:50:29,730 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:52:34,480 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:52:34,482 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:52:34,486 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-06-28 16:52:34,549 | DEBUG | app.repos.application_repository | Base count: 1
+2026-06-28 16:52:34,556 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-06-28 16:52:34,559 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 22:43:49,648 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 22:43:49,667 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 22:43:49,674 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 22:43:49,734 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 22:43:49,746 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 22:43:49,756 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 23:25:34,775 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 23:25:34,779 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 23:25:34,786 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 23:25:34,919 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 23:25:34,932 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 23:25:34,944 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 23:25:56,327 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 23:25:56,327 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 23:25:56,327 | DEBUG | app.repos.application_repository | Final results: ['Google']
+2026-07-12 23:25:56,346 | DEBUG | app.repos.application_repository | Base count: 1
+2026-07-12 23:25:56,351 | DEBUG | app.repos.application_repository | Final result count: 1
+2026-07-12 23:25:56,351 | DEBUG | app.repos.application_repository | Final results: ['Google']

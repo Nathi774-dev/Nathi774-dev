@@ -1,4 +1,8 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parents[2]
+ENV_FILE = BASE_DIR / ".env"
 
 class Settings(BaseSettings):
     DATABASE_URL: str
@@ -7,9 +11,12 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: str
     TEST_DATABASE_URL: str
     
-    CLAUDE_API_KEY: str
+    GEMINI_API_KEY: str
     
-    class Config:
-        env_file = ".env"
+    model_config = {
+        "env_file": ENV_FILE,
+        "extra": "ignore"
+    }
+        
 
 settings = Settings()

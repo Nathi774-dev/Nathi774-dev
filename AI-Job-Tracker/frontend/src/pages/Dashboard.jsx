@@ -3,6 +3,7 @@ import StatCard from "../components/Dashboard/StatsBar";
 import { useEffect, useState } from "react";
 import api from "../api/axios";
 import StatusPieChart from "../components/StatusPieChart";
+import ReminderCard from "../components/ReminderCard";
 
 function Dashboard() {
     const [stats, setStats] = useState({
@@ -44,6 +45,9 @@ function Dashboard() {
                 {/* The graph layout underneath the stat cards */}
                 <StatusCard stats={stats} />
                 <StatusPieChart stats={stats} />
+
+                {/* Reminders for job applications and interviews */}
+                <ReminderCard />
 
                 <section className="section card">
                     <h2 className="section-title">

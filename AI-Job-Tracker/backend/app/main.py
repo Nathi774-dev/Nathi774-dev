@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import auth, users, applications, dashboard, interviews, document
+from app.api import auth, users, applications, dashboard, interviews, document, reminder, ai
 
 app = FastAPI(
     title="AI Job Tracker API",
@@ -28,3 +28,5 @@ app.include_router(applications.router, prefix="/applications", tags=["Applicati
 app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(interviews.router, prefix="/interviews", tags=["Interviews"])
 app.include_router(document.router, prefix="/documents", tags=["Documents"])
+app.include_router(reminder.router, prefix="/reminders", tags=["Reminders"])
+app.include_router(ai.router, prefix="/ai", tags=["AI"])
