@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
 import {
     Beef, CakeSlice, Croissant, Eye, EyeOff, Grape, Soup, Utensils, Wine, Pizza,
     Mail
@@ -22,9 +25,14 @@ const initialForm = {
 }
 
 function Login() {
+    const { login } = useAuth();
+    const navigate = useNavigate();
+
     const [showPassword, setShowPassword] = useState(false);
     const [formData, setFormData] = useState(initialForm);
     const [errors, setErrors] = useState({});
+    const [error, setError] = useState('');
+    const [submitting, setSubmitting] = useState(false);
 
     function handleChange(e) {
         e.preventDefault();
@@ -43,7 +51,7 @@ function Login() {
         const nextErrors = {};
         if (!formData.email.trim()) {
             nextErrors.email = "Please enter your email address";
-        } else if (!/^\S+@\S+\.\S+$/.test(formData.email)) {
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             nextErrors.email = "Please enter a valid email address";
         }
 
@@ -56,15 +64,26 @@ function Login() {
         return nextErrors;
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         const validateErrors = validateForm();
+
         if (Object.keys(validateErrors).length > 0) {
             setErrors(validateErrors);
             return;
         }
         // this should be connected to the backend
-        console.log("Login details: ", formData);
+        setError("");
+        setSubmitting(true);
+
+        try {
+            await login(formData.email, formData.password, formData.rememberMe);
+            navigate("/");
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setSubmitting(false);
+        }
     }
 
     return (
@@ -79,7 +98,7 @@ function Login() {
                         <AuthInput
                             icon={Mail} 
                             error={errors.email} 
-                             id="email" 
+                            id="email" 
                             type="email"
                             name="email" 
                             value={formData.email} 
@@ -113,12 +132,11 @@ function Login() {
                         className={
                             `h-14 w-full rounded-2xl border-2 bg-[#ece8e8] 
                             px-5 pr-14 text-base text-stone-900 outline-none transition duration-300 placeholder:text-stone-400
-                            hover:bg-white/95 focus:-translate-y-0.5 focus:bg-white focus:shadow-xl
-                            ${errors.password ? "border-red-700" : "border-transparent focus:border-white"}`
+                            hover:bg-white/95 focus:-translate-y-0.5 focus:bg-white focus:shadow-xl font-semibold
+                            ${errors.password ? "border-red-700 bg-red-100" : "border-transparent focus:border-white"}`
                         }
                     />
                         
-
                     <div className="flex items-center justify-between gap-4 text-sm">
                         <label className="flex cursor-pointer items-center gap-2 text-white">
                             <input 
@@ -131,20 +149,24 @@ function Login() {
                             Remember Me
                         </label>
 
-                        <a href="/forgot-password" className="font-medium text-white transition hover:text-black">
+                        <Link to="/forgot-password" className="font-medium text-white transition hover:text-black">
                             Forgot Password?
-                        </a>
+                        </Link>
                     </div>
-
-                    <AuthButton>Login</AuthButton>
+                    {error && (
+                        <p className="rounded-xl bg-red-100 px-4 py-2 text-sm text-red-700">
+                            {error}
+                        </p>
+                    )}
+                    <AuthButton loggingIn={submitting}>{submitting ? "Logging in..." : "Login"}</AuthButton>
                 </form>
 
                 <p className="mt-7 text-left text-sm text-white">
                     Don&apos;t have an account?{" "}
                 </p>
-                <a href="/signup" className="font-semibold text-black underline-offset-4 hover:underline">
+                <Link to="/signup" className="font-semibold text-black underline-offset-4 hover:underline">
                     Create Account
-                </a>
+                </Link>
             </AuthLayout>
         </main>
     )

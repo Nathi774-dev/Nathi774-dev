@@ -2,8 +2,8 @@ import { Heart, Plus, Star } from "lucide-react";
 import { useFavourites } from "../../context/FavouriteContext";
 
 export default function MenuCard({ item, onAddToCart }) {
-    const {favourites, toggleFavourites, isFavourite} = useFavourites();
-    const favourite = isFavourite(item.id)
+    const { toggleFavourites, isFavourite} = useFavourites();
+    const favourite = isFavourite(item._id)
     return (
         <article
             className="
@@ -23,7 +23,16 @@ export default function MenuCard({ item, onAddToCart }) {
                         {item.name}
                     </h2>
                     <button
-                        onClick={() => toggleFavourites(item)}
+                        onClick={async () => {
+                            try {
+                                await toggleFavourites(item)
+                            } catch (err) {
+                                console.error('Favourite error: ', err);
+                            }
+                        }}
+                        aria-label={
+                            favourite ? 'Remove from favourites' : 'Add to favourites'
+                        }
                         className="
                             rounded-full
                             p-2
@@ -35,14 +44,15 @@ export default function MenuCard({ item, onAddToCart }) {
                     >
                         <Heart
                             size={22} 
-                            className={
-                                favourite ? 'fill-red-500 text-red-500' : 'text-stone-600'
-                            }
+                            fill={favourite ? "red" : "none"}
+                            className={`transition-all duration-200
+                                ${favourite ? 'fill-red-500 text-red-500' : 'text-stone-600'}
+                            `}
                         />
                     </button>
                 </div>
                 <p className="mt-3 text-sm text-stone-600">
-                    {item.desc}
+                    {item.description}
                 </p>
                 <div className="mt-5 flex items-center justify-between">
                     <div className="flex items-center gap-2">

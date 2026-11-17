@@ -1,7 +1,8 @@
-export default function AuthButton({ children }) {
+export default function AuthButton({ children, loggingIn }) {
     return (
         <button
             type="submit"
+            disabled={loggingIn}
             className="
                 h-14 w-full rounded-2xl 
                 bg-black font-semibold text-white shadow-lg 

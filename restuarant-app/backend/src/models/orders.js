@@ -62,6 +62,19 @@ const orderItem = new mongoose.Schema({
             'paid'
         ],
         default: 'paid'
+    },
+    paymentProvider: {
+        type: String,
+        enum: ["payfast"],
+        default: "payfast"
+    },
+    payfastPaymentId: {
+        type: String,
+        default: null
+    },
+    paidAt: {
+        type: Date,
+        default: null
     }
 }, { timestamps: true });
 

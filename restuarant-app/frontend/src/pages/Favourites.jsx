@@ -13,7 +13,13 @@ function Favourites() {
 
     return (
         <main className="min-h-screen bg-[#e98a53] px-8 py-10">
-            <FavouritesHeader onBack={() => navigate(-1)} />
+            <FavouritesHeader onBack={() => {
+                if (window.history.length > 1) {
+                    navigate(-1);
+                } else {
+                    navigate("/menu");
+                }
+            }} />
             <FavouritesGrid favourites={favourites} onRemoveFavourite={removeFavourite} onBrowse={() => navigate("/menu")} />
             <ShoppingCart items={totalItems} onClick={() => navigate("/cart")} />
         </main>

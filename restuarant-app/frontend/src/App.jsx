@@ -7,6 +7,7 @@ import Menu from "./pages/Menu";
 import Payment from "./pages/Payment";
 import Favourites from "./pages/Favourites";
 import Reservations from "./pages/Reservations";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path="/cart" element={<Payment />} />
       <Route path="/favourites" element={<Favourites />} />
       <Route path="/reservations" element={<Reservations />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   )
 }

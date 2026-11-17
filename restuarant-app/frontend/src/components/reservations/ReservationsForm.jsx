@@ -9,7 +9,8 @@ export default function ReservationForm() {
         updateReservation,
         selectTable,
         createReservation,
-        myReservation
+        myReservation,
+        isReservationComplete
     } = useReservation();
 
     const reservations = myReservation
@@ -18,19 +19,24 @@ export default function ReservationForm() {
     console.log("Selected location:", selectedLocation);
     console.log("Available tables:", availableTables);
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
+        try {
+            if (!isReservationComplete) {
+                alert("Please complete all reservation fields and select a table.");
+                return;
+            }
 
-        console.log("Reservation submitted:", reservation);
-        console.log("Selected location:", selectedLocation);
-        console.log("Selected table:", reservation.tableId);
+            await createReservation();
 
-        const success = createReservation();
-        if (!success) {
-            return;
+            console.log("Current reservation:", reservation);
+            console.log("Location ID:", reservation.locationId);
+            console.log("Selected location:", selectedLocation);
+
+            alert("Reservation successfully booked!");
+        } catch (err) {
+            alert(err.message);
         }
-
-        alert("Reservation complete")
     }
 
     function handleChange(e) {
@@ -191,7 +197,7 @@ export default function ReservationForm() {
                         <select
                             id="locationId"
                             name="locationId"
-                            value={reservation.locationId}
+                            value={reservation.locationId || ""}
                             onChange={handleChange}
                             className="
                                 h-14

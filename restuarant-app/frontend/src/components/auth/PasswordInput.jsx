@@ -11,8 +11,8 @@ export default function PasswordInput({ error, ...props }) {
                     {...props}
                     type={showPassword ? "text" : "password"}
                     className={
-                        `h-14 w-full rounded-2xl border-2 bg-[#ece8e8] px-5
-                        pr-14 outline-none transition hover:bg-white
+                        `h-14 w-full rounded-2xl border-2 bg-[#ece8e8] px-10
+                        pr-22 outline-none transition hover:bg-white
                         ${error ? "border-red-700" : "bg-transparent"}`
                     }
                 />
@@ -27,7 +27,7 @@ export default function PasswordInput({ error, ...props }) {
             </div>
 
             {error && (
-                <p className="mt-2 pl-2 text-sm text-red-900">{error}</p>
+                <p className="mt-2 pl-2 text-sm text-red-900 font-medium">{error}</p>
             )}
         </>
     )

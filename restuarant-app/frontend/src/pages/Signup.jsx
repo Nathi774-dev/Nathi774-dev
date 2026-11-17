@@ -141,7 +141,7 @@ function SignUp() {
                             <label className="flex items-center gap-3 text-white text-sm">
                                 <input 
                                     type="checkbox"
-                                    namw="agree"
+                                    name="agree"
                                     checked={formData.agree}
                                     onChange={handleChange}
                                     className="h-4 w-4 accent-black"
@@ -159,7 +159,7 @@ function SignUp() {
                             Create a New account
                         </AuthButton>
                         <p className="text-white text-center text-sm">
-                            Alread have an account?{" "}
+                            Already have an account?{" "}
                         </p>
                         <Link to="/login" className="font-semibold hover:underline text-black">
                             Login

@@ -3,12 +3,14 @@ import ReservationsHeader from "../components/reservations/ReservationsHeader";
 import ReservationForm from "../components/reservations/ReservationsForm";
 import ShowReservations from "../components/reservations/ShowReservations";
 import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useReservation } from "../context/ReservationContext";
 
 function Reservations() {
     const [showReservations, setShowReservations] = useState(false);
     const { myReservation: reservations } = useReservation();
+    const navigate = useNavigate();
 
     return (
         <main className="min-h-screen">

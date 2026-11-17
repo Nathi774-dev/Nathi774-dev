@@ -1,24 +1,10 @@
 import { ArrowLeft, Heart } from "lucide-react"
+import OnBackButton from "../OnBackButton"
 
 export default function FavouritesHeader({ onBack }) {
    return (
     <header className="max-auto max-w-6xl">
-        <button
-            type="button"
-            onClick={onBack}
-            className="
-                flex
-                items-center
-                gap-2
-                text-stone-700
-                transition
-                duration-300
-                hover:text-black
-            "
-        >
-            <ArrowLeft size={20} />
-            Back
-        </button>
+        <OnBackButton OnBack={onBack} />
         <div className="mt-8 flex items-center gap-4">
             <div className="
                 flex

@@ -1,8 +1,24 @@
 import { Heart, Plus, Star } from "lucide-react";
 import { useCart } from "../../context/CartContext";
+import { useState } from "react";
 
 export default function FavouriteCard({ item, onRemoveFavourite }) {
     const { addToCart } = useCart();
+    const [removing, setRemoving] = useState(false);
+
+    async function handleRemoveFavourite() {
+        try {
+            setRemoving(true);
+            await onRemoveFavourite();
+        } catch (err) {
+            console.error("Unable to remove favourite: ", err)
+        } finally {
+            setRemoving(false);
+        }
+    }
+
+    const outOfStock = Number(item.stock) <= 0;   // true or false
+
 
     return (
         <article className="
@@ -35,6 +51,8 @@ export default function FavouriteCard({ item, onRemoveFavourite }) {
                         transition
                         hover:scale-110
                     "
+                    onClick={handleRemoveFavourite}
+                    disabled={removing}
                 >
                     <Heart size={20} className="fill-red-600 text-red-600" />
                 </button>
@@ -48,7 +66,7 @@ export default function FavouriteCard({ item, onRemoveFavourite }) {
                             {item.name}
                         </h2>
                         <p className="mt-2 text-sm leading-6 text-stone-600">
-                            {item.desc}
+                            {item.description}
                         </p>
                     </div>
                 </div>
@@ -66,9 +84,17 @@ export default function FavouriteCard({ item, onRemoveFavourite }) {
                     </span>
                 </div>
 
+                {/* Stock info */}
+                {outOfStock && (
+                    <p className="mt-3 text-sm font-medium text-reed-600">
+                        Currently out of stock.
+                    </p>
+                )}
+
                 {/* Add to cart */}
                 <button
                     type="button"
+                    disabled={outOfStock}
                     onClick={() => addToCart(item)}
                     className="
                         mt-6
@@ -88,8 +114,8 @@ export default function FavouriteCard({ item, onRemoveFavourite }) {
                         active:scale-95
                     "
                 >
-                    <Plus size={18} />
-                    Add to cart
+                    {!outOfStock && <Plus size={18} />}
+                    {outOfStock ? "Sorry, out of stock" : "Add to cart"}
                 </button>
             </div>
         </article>

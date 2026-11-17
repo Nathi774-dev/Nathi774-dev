@@ -5,6 +5,11 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 
 import authRoutes from "./routes/authRoutes.js";
+import paymentRoutes from './routes/paymentRoutes.js';
+import orderRoutes from "./routes/orderRoutes.js";
+import menuRoutes from "./routes/menuRoutes.js";
+import favouriteRoutes from "./routes/favouriteRoutes.js";
+import reservationRoutes from "./routes/reservationRoutes.js";
 
 dotenv.config();
 
@@ -16,14 +21,19 @@ app.use(cors({
     credentials: true
 }));
 
-// IMPORTANT: Body parsers must come BEFORE routes
+// Body parsers must come before routes
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 
 // API routes
 app.use("/api/auth", authRoutes);
+app.use("/api/auth/payments", paymentRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/menu", menuRoutes);
+app.use("/api/favourites", favouriteRoutes);
+app.use("/api/reservations", reservationRoutes);
 
-// Start server
+// Start the server
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {

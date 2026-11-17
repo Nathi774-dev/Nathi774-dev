@@ -1,7 +1,7 @@
 import FavouriteCard from "./FavouriteCard";
 import { Heart } from "lucide-react";
 
-export default function FavouritesGrid({favourites, onRemoveFavourite, onBrowse}) {
+export default function FavouritesGrid({favourites = [], onRemoveFavourite, onBrowse}) {
     if (favourites.length === 0) {
         // empty state
         return (
@@ -38,7 +38,7 @@ export default function FavouritesGrid({favourites, onRemoveFavourite, onBrowse}
         <section className="mx-auto mt-10 max-w-6xl">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                 {favourites.map((fav) => (
-                    <FavouriteCard key={fav.id} item={fav} onRemoveFavourite={onRemoveFavourite} />
+                    <FavouriteCard key={fav._id} item={fav} onRemoveFavourite={() => onRemoveFavourite(fav._id)} />
                 ))}
             </div>
         </section>

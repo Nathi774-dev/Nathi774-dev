@@ -1,15 +1,40 @@
 import {
     useState,
     useContext,
-    createContext
+    createContext,
+    useEffect
 } from "react";
 
-import { locations } from "../components/menu/data/tableData";
+import { useAuth } from "./AuthContext"; 
+
+import { locations as locals } from "../components/menu/data/tableData";
 
 const ReservationContext = createContext(null);
+const apiURL = `${import.meta.env.VITE_API_URL}/api`
+
+
+async function apiRequest(endpoint, token, options = {}) {
+    const response = await fetch(`${apiURL}${endpoint}`, {
+        ...options,
+        headers: {
+            "Content-Type": "application/json",
+            ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            ...options.headers
+        }
+    });
+
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+        throw new Error(data.message || "Something went wrong.");
+    }
+
+    return data;
+}
 
 export function ReservationProvider({ children }) {
 
+    const { token, isAuthenticated, loading: authLoading } = useAuth();
     const [reservation, setReservation] = useState({
         locationId: "",
         date: "",
@@ -18,244 +43,231 @@ export function ReservationProvider({ children }) {
         tableId: null
     });
     const [myReservation, setMyReservation] = useState([]);
+    const [availableTables, setAvailableTables] = useState([])
+    const [loadingResponse, setLoadingResponse] = useState(false)
+    const [reservationError, setReservationError] = useState("")
 
-    function createReservation() {
-        if (!myReservation) {
-            return false;
+    // SELECTED LOCATION
+    const selectedLocation = locals.find(loc => loc.id === reservation.locationId)
+    const locationTables = selectedLocation?.tables ?? [];
+
+    // FETCH MY RESERVATIONS
+    async function fetchMyReservation() {
+        if (!token || isAuthenticated) {
+            setMyReservation([]);
+            return;
         }
-        const newReservation = {
-            id: `res-${Date.now()}`,
-            ...reservation
+
+        try {
+            setLoadingResponse(true);
+            setReservationError("");
+
+            const data = await apiRequest("/reservations/my-reservations");
+            setMyReservation(Array.isArray(data.reservations) ? data.reservations : []);
+        } catch (err) {
+            console.error("Fetch reservations error: ", err);
+            setReservationError(err.message);
+        } finally {
+            setLoadingResponse(false);
         }
-
-        setMyReservation((currentReservations) => [
-            ...currentReservations,
-            newReservation
-        ])
-
-        return true;
     }
 
-    // --------------------------------
+    useEffect(() => {
+        if (authLoading) return;
+
+        if (isAuthenticated && token) {
+            fetchMyReservation();
+        } else {
+            setMyReservation([]);
+        }
+
+    }, [authLoading, isAuthenticated, token]);
+
+    // FETCH AVAILABLE TABLES
+    useEffect(() => {
+        const { locationId, date, time, guests } = reservation;
+        if (!locationId || !date || !time || !guests) {
+            setAvailableTables([]);
+            return;
+        }
+        let ignore = false;
+        async function fetchAvailableTables() {
+            try {
+                const params = new URLSearchParams({ locationId, date, time, guests: String(guests) });
+                const data = await apiRequest(`/reservations/availability?${params.toString()}`, token);
+
+                // for debugging
+                console.log("Availability request:", params.toString());
+                console.log("Availability response:", data);
+                if (!ignore) {
+                    setAvailableTables(data.availableTables || []);;
+                }
+            } catch (err) {
+                console.error("Fetch available tables error: ", err);
+                if (!ignore) {
+                    setAvailableTables([]);
+                }
+            }
+        }
+
+        fetchAvailableTables();
+
+        return () => {
+            ignore = true;
+        }
+    }, [reservation.locationId, reservation.date, reservation.time, reservation.guests])
+
     // UPDATE RESERVATION
-    // --------------------------------
-
     function updateReservation(name, value) {
-
-        setReservation((currentReservation) => ({
-            ...currentReservation,
-
-            [name]: value,
-
-            // Changing these fields means
-            // the previously selected table
-            // may no longer be valid.
-            ...(name === "locationId" ||
-            name === "date" ||
-            name === "time" ||
-            name === "guests"
-                ? { tableId: null }
-                : {})
+        setReservation(current => ({
+            ...current,
+            [name]: name === "guests" ? Number(value) : value,
+            ...(
+                name === "locationId" || 
+                name === "date" || 
+                name === "time" || 
+                name === "guests" ? { tableId: null } : {}
+            )
         }));
+    } 
+
+    // SELECT TABLE
+    function selectTable(tableId) {
+        const table = availableTables.find(item => item.id === Number(tableId));
+        if (!table) return;
+
+        setReservation(current => ({ ...current, tableId: table.id }))
     }
 
-
-    // --------------------------------
     // RESET TABLE
-    // --------------------------------
-
     function resetTable() {
-
-        setReservation((currentReservation) => ({
-            ...currentReservation,
+        setReservation(current => ({
+            ...current,
             tableId: null
         }));
     }
 
+    // CREATE RESERVATION
+    async function createReservation() {
+        try {
+            setReservationError("");
+            
+            if (authLoading) {
+                throw new Error("Please wait until your is verified");
+            }
 
-    // --------------------------------
-    // FIND SELECTED LOCATION
-    // --------------------------------
+            if (!isAuthenticated || !token) {
+                throw new Error("Please log in before booking a reservation.");
+            }
 
-    const selectedLocation = locations.find(
-        (location) =>
-            location.id === reservation.locationId
-    );
+            const data = await apiRequest("/reservations", token, {
+                method: "POST",
+                body: JSON.stringify({
+                    locationId: reservation.locationId,
+                    tableId: reservation.tableId,
+                    date: reservation.date,
+                    time: reservation.time,
+                    guests: Number(reservation.guests)
+                })
+            });
 
+            // Adds the saved reservation returned by MongoDB
+            setMyReservation(current => [...current, data.reservation]);
 
-    // --------------------------------
-    // GET TABLES FOR LOCATION
-    // --------------------------------
+            // clear the form after successful booking
+            setReservation({
+                locationId: "",
+                date: '',
+                time: '',
+                guests: 1,
+                tableId: null
+            });
 
-    const locationTables =
-        selectedLocation?.tables ?? [];
-
-
-    // --------------------------------
-    // TEMPORARY RESERVATIONS
-    // --------------------------------
-
-    const existingReservations = [
-
-        {
-            id: "res-001",
-            locationId: "main",
-            tableId: 3,
-            date: "2026-08-23",
-            time: "08:00",
-            guests: 3
-        },
-
-        {
-            id: "res-002",
-            locationId: "walmer",
-            tableId: 4,
-            date: "2026-09-30",
-            time: "16:45",
-            guests: 1
-        },
-
-        {
-            id: "res-003",
-            locationId: "bluewater",
-            tableId: 2,
-            date: "2026-10-08",
-            time: "14:10",
-            guests: 3
+            return data.reservation;
+        } catch (err) {
+            console.error("Create reservation error: ", err);
+            setReservationError(err.message);
+            throw err;
         }
-
-    ];
-
-
-    // --------------------------------
-    // CHECK IF TABLE IS RESERVED
-    // --------------------------------
-
-    
-    
-    // --------------------------------
-    // AVAILABLE TABLES
-    // --------------------------------
-
-    
-    
-    // SELECT TABLE
-    function selectTable(tableId) {
-
-        const table = availableTables.find(
-            (table) => table.id === tableId
-        );
-
-        if (!table) {
-            return;
-        }
-        
-        setReservation((currentReservation) => ({
-            ...currentReservation,
-            tableId
-        }));
     }
 
+    // CANCEL RESERVATION
+    async function cancelReservation(reservationId) {
+        try {
+            setReservationError("");
+
+            const data = await apiRequest(
+                `/reservations/cancel/${reservationId}`,
+                token,
+                { method: "DELETE" }
+            );
+
+            // Only update the reservation list after successful cancellation
+            setMyReservation(current => {
+                if (!Array.isArray(current)) return [];
+
+                return current.map(item =>
+                    item._id === reservationId
+                        ? { ...item, status: "cancelled" }
+                        : item
+                );
+            });
+
+            return data;
+
+        } catch (error) {
+            console.error("Cancel reservation error:", error);
+
+            // Do not overwrite myReservation with an error message
+            setReservationError(error.message);
+
+            throw error;
+        }
+    }
+    
 
     // CHECK RESERVATION
-    const isReservationComplete =
-    Boolean(
-        reservation.locationId &&
+    const isReservationComplete = Boolean(
+        reservation.locationId && 
         reservation.date &&
-            reservation.time &&
-            reservation.guests &&
-            reservation.tableId
-        );
-
-
-    // DEBUGGING
-
-    console.log("Reservation:", reservation);
-
-    console.log(
-        "Selected location:",
-        selectedLocation
+        reservation.tableId && 
+        reservation.guests && 
+        reservation.time
     );
 
-    console.log(
-        "Location tables:",
-        locationTables
-    );
-    
-    console.log(
-        "Available tables:",
-        availableTables
-    );
-
-
-    // --------------------------------
-    // PROVIDER
-    // --------------------------------
-
-    const allReservations = [
-        ...existingReservations,
-        ...myReservation
-    ]
-
+    // CHECK AVAILABILITY
     function isTableReserved(tableId) {
-        return allReservations.some((reserveItem) => {
-            return (
-                reserveItem.locationId === reservation.locationId && 
-                reserveItem.tabelId === tableId && 
-                reserveItem.date === reservation.date && 
-                reserveItem.time === reservation.time
-            )
-        })
+        return !availableTables.some(table => table.id === Number(tableId))
     }
-    
-    const availableTables =
-        locationTables.filter((table) => {
 
-            const hasEnoughSeats =
-                table.seats >=
-                Number(reservation.guests);
-
-            const alreadyReserved =
-                isTableReserved(table.id);
-
-            return (
-                hasEnoughSeats &&
-                !alreadyReserved
-            );
-        });
+    //PROVIDER (LAST STEP)
     return (
-        <ReservationContext.Provider
-            value={{
-                reservation,
-                locations,
-                selectedLocation,
-                locationTables,
-                availableTables,
-                existingReservations,
-                isReservationComplete,
-                updateReservation,
-                resetTable,
-                selectTable,
-                isTableReserved,
-                createReservation,
-                myReservation
-            }}
-        >
+        <ReservationContext.Provider value={{
+            reservation,
+            locations: locals,
+            selectTable,
+            reservationError,
+            selectedLocation,
+            locationTables,
+            availableTables,
+            isReservationComplete,
+            updateReservation,
+            createReservation,
+            cancelReservation,
+            resetTable,
+            myReservation,
+            loadingResponse,
+            fetchMyReservation
+        }}>
             {children}
         </ReservationContext.Provider>
-    );
+    )
 }
 
-
 export function useReservation() {
-
-    const context =
-        useContext(ReservationContext);
-
+    const context = useContext(ReservationContext);
     if (!context) {
-        throw new Error(
-            "useReservation must only be used inside the ReservationProvider"
-        );
+        throw new Error("useReservation must only be used inside the Reservation provider");
     }
 
     return context;

@@ -8,9 +8,11 @@ import ReviewSection from "../components/home/reviews/ReviewSection";
 import QuickLinks from "../components/home/QuickLinks";
 import Footer from "../components/Footer";
 import Payment from "./Payment";
+import { useAuth } from "../context/AuthContext";
 
 function Home() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const { logout } = useAuth();
 
     return (
         <>
@@ -23,7 +25,7 @@ function Home() {
                 <ReviewSection />
                 <section className="relative">
                     <div className="sticky bottom-6 flex justify-end pr-6">
-                        <FloatingActions />
+                        <FloatingActions onLogout={() => logout()}/>
                     </div>
                 </section>
                 <QuickLinks />

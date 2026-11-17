@@ -93,3 +93,26 @@ export const loginUser = async (req, res) => {
         return res.status(500).json({ message: "Server error during login." })
     }
 }
+
+// GET for the profile page
+export const getMe = async (req, res) => {
+    try {
+        // get the authenticated user's id from the middleware
+        const user = await User.findById(req.user.id).select("_id name email role createdAt")
+        if (!user) {
+            return res.status(404).json({
+                message: 'User not found.'
+            })
+        }
+
+        return res.status(200).json({
+            message: 'User profile retrieved successfully',
+            user
+        })
+    } catch (err) {
+        console.error("There was an error while trying to retrieve your details: ", err)
+        return res.status(500).json({
+            message: 'There was an error in the backend while recieving your details'
+        })
+    }
+}

@@ -1,18 +1,27 @@
-import { menuItems } from "./data/menuData";
 import { categories } from "./data/menuData";
 import MenuCard from "./MenuCard";
-
+import { useMenu } from "../../context/MenuContext";
 
 export default function MenuGrid({ search, category, filters, onAddToCart }) {
+    const { menuItems, error, loading } = useMenu();
+    
+    if (loading) {
+        return <p className="py-10 text-center">Loading our delicious menu...</p>
+    }
+
+    if (error) {
+        return <p className="py-10 text-center text-red-700">Error: {error}</p>
+    }
+
     const filteredItems = menuItems.filter((item) => {
         const matchedCategory = category === "All" || item.category === category;
-        const matchedSearches = item.name.toLowerCase().includes(search.toLowerCase());
-        const matchesAvailable = !filters.availability || item.available;
+        const matchedSearch = item.name.toLowerCase().includes(search.toLowerCase());
+        const matchesAvailable = !filters.availableOnly || item.stock > 0;
         const matchesVegetarian = !filters.vegetarian || item.vegetarian;
         const matchesVegan = !filters.vegan || item.vegan;
 
         return (
-            matchedCategory && matchedSearches && matchesAvailable && matchesVegetarian && matchesVegan
+            matchedCategory && matchedSearch && matchesAvailable && matchesVegetarian && matchesVegan
         );
     });
 
@@ -22,7 +31,7 @@ export default function MenuGrid({ search, category, filters, onAddToCart }) {
             filteredItems.sort((a, b) => a.price - b.price)
             break;
         case "high":
-            filteredItems.sort((a, b) => b.sort - a.sort);
+            filteredItems.sort((a, b) => b.price - a.price);
             break;
         case "rating":
             filteredItems.sort((a, b) => b.rating - a.rating)
@@ -41,7 +50,7 @@ export default function MenuGrid({ search, category, filters, onAddToCart }) {
             ) : (
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     {filteredItems.map((item) => (
-                        <MenuCard key={item.id} item={item} onAddToCart={onAddToCart} />
+                        <MenuCard key={item._id} item={item} onAddToCart={onAddToCart} />
                     ))}
                 </div>
             )} 
