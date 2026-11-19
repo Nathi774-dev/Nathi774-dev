@@ -1,9 +1,23 @@
 import { Heart, Plus, Star } from "lucide-react";
 import { useFavourites } from "../../context/FavouriteContext";
+import { useState } from "react";
 
 export default function MenuCard({ item, onAddToCart }) {
     const { toggleFavourites, isFavourite} = useFavourites();
-    const favourite = isFavourite(item._id)
+    const [cartMessage, setCartMessage] = useState("");
+    const favourite = isFavourite(item._id);
+
+    // this is added for the updated Cart context
+    function handleAddToCart() {
+        const success = onAddToCart(item);
+        if (success === false) {
+            setCartMessage("Sorry, this item is unavailable or out of stock.");
+            return;
+        }
+
+        setCartMessage("Added to cart!");
+    }
+
     return (
         <article
             className="
@@ -62,15 +76,23 @@ export default function MenuCard({ item, onAddToCart }) {
                     <span className="font-bold text-[#d96d2d]">R{item.price}</span>
                 </div>
                 <button 
+                    disabled={Number(item.quantity) > 0}
                     className="
                         mt-6 flex w-full items-center justify-center gap-2 rounded-xl
                         bg-[#5a311d] py-3 font-semibold text-white transition hover:bg-[#d96d2d]
                     "
-                    onClick={() => onAddToCart(item)}
+                    onClick={handleAddToCart}
                 >
                     <Plus size={18} />
-                    Add to cart
+                    {Number(item.stock) <= 0 ? "Out of stock" : "Add to cart"}
                 </button>
+
+                {/* The status message to be displayed */}
+                {cartMessage && (
+                    <p className="mt-2 text-center text-xs text-stone-500">
+                        {cartMessage}
+                    </p>
+                )}
             </div>
         </article>
     )

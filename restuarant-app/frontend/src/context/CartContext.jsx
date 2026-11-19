@@ -1,122 +1,113 @@
-import { menuItems } from "../components/menu/data/menuData";
-import { useContext, createContext, useState } from "react";
 
-const cartContext = createContext(null);
+import {
+    useContext,
+    createContext,
+    useState
+} from "react";
 
-export function CartProvider({children}) {
+const CartContext = createContext(null);
+
+export function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
-    const [inventory, setInventory] = useState(menuItems);
 
-    console.log("Cart items: ", cartItems);
-    console.log("Menu items: ", menuItems);
     function addToCart(item) {
-        console.log("Stock: ", item.quantity);
-        if (item.quantity <= 0) {
-            return;
+        if (!item._id || Number(item.stock) <= 0) {
+            return false;
         }
-        setInventory((currentInventory) => {
-            // decrease inventory
-            console.log("Current inventory: ", currentInventory);
-            const inventoryItem = currentInventory.find((stock) => {
-                stock.id === item.id
-            })
 
-            if (!inventoryItem) {
-                console.error("Item is out of stock: ", item);
-                return currentInventory
-            }
-            currentInventory.map((stock) => {
-                stock.id === item.id ? {
-                    ...stock,
-                    quantity: stock.quantity - 1
-                } : stock
-            })
-        })
+        const existingItem = cartItems.find(
+            cartItem => cartItem._id === item._id
+        );
 
-        console.log("item: ", item);
+        if (
+            existingItem &&
+            existingItem.cartQuantity >= Number(item.stock)
+        ) {
+            return false;
+        }
+
         setCartItems(currentItems => {
-            console.log("Current items: ", currentItems);
-            const existingItem = currentItems.find(cartItem => {
-                cartItem.id === item.id
-            })
+            const existing = currentItems.find(
+                cartItem => cartItem._id === item._id
+            );
 
-            console.log("Existing item: ", existingItem);
-
-            if (existingItem) {
-                return currentItems.map((currentItem) => {
-                    currentItem.id === item.id ? (
-                        {
-                            ...currentItem,
-                            cartQuantity: currentItem.cartQuantity + 1
+            if (existing) {
+                return currentItems.map(cartItem =>
+                    cartItem._id === item._id
+                        ? {
+                            ...cartItem,
+                            cartQuantity: cartItem.cartQuantity + 1
                         }
-                    ) : currentItem
-                })
+                        : cartItem
+                );
             }
 
             return [
                 ...currentItems,
                 {
                     ...item,
-                    price: item.price,
                     cartQuantity: 1
                 }
-            ]
-        })
+            ];
+        });
+
+        return true;
     }
 
     function removeItemFromCart(id) {
-        setCartItems(currentItems => {
-            currentItems.filter(item => {
-                item.id !== id
-            })
-        })
+        setCartItems(currentItems =>
+            currentItems.filter(item => item._id !== id)
+        );
     }
 
     function increaseQuantity(id) {
-        setCartItems(currentItems => {
-            currentItems.map((item) => {
-                item.id === id ? (
-                    {
-                        ...item,
-                        quantity: item.quantity + 1
-                    }
-                ) : item
+        setCartItems(currentItems =>
+            currentItems.map(item => {
+                if (item._id !== id) return item;
+
+                if (item.cartQuantity >= Number(item.stock)) {
+                    return item;
+                }
+
+                return {
+                    ...item,
+                    cartQuantity: item.cartQuantity + 1
+                };
             })
-        })
+        );
     }
-    
+
     function decreaseQuantity(id) {
-        setCartItems(currentItems => {
-            currentItems.map((item) => {
-                item.id === id && item.quantity > 0 ? (
-                    {
-                        ...item,
-                        quantity: item.quantity - 1
-                    }
-                ) : item
+        setCartItems(currentItems =>
+            currentItems.map(item => {
+                if (item._id !== id) return item;
+                if (item.cartQuantity <= 1) return item;
+
+                return {
+                    ...item,
+                    cartQuantity: item.cartQuantity - 1
+                };
             })
-        })
+        );
     }
 
     function clearItems() {
         setCartItems([]);
     }
 
-    // total of each individual item
-    const totalItems = cartItems.reduce((total, item) => {
-        return total + Number(item.cartQuantity)
-    }, 0);
+    const totalItems = cartItems.reduce(
+        (total, item) => total + item.cartQuantity,
+        0
+    );
 
-    // total price of all items in the cart
-    const subtotal = cartItems.reduce((total, item) => {
-        total + Number(item.price) * Number(item.cartQuantity)
-    }, 0)
-
-    console.log("Total: ", totalItems);
-    console.log("Subtotal: ", subtotal);
+    const subtotal = cartItems.reduce(
+        (total, item) =>
+            total + Number(item.price) * item.cartQuantity,
+        0
+    );
 
     return (
-        <cartContext.Provider
+        <CartContext.Provider
             value={{
                 cartItems,
                 addToCart,
@@ -129,15 +120,18 @@ export function CartProvider({children}) {
             }}
         >
             {children}
-        </cartContext.Provider>
-    )
+        </CartContext.Provider>
+    );
 }
 
 export function useCart() {
-    const context = useContext(cartContext);
+    const context = useContext(CartContext);
+
     if (!context) {
-        throw new Error("useCart can only be used in the cart context provider");
+        throw new Error(
+            "useCart must be used inside CartProvider."
+        );
     }
 
-    return context
+    return context;
 }

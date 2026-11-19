@@ -1,82 +1,58 @@
 import { Lock, CreditCard } from "lucide-react";
 import PaymentInput from "./PaymentInput";
+import PayButton from "./PayButton";
 
-export default function PaymentForm({paymentData, onChange, onSubmit}) {
+export default function PaymentForm({customerData, onChange, onSubmit, loading = false}) {
     return (
         <section className="rounded-3xl bg-white p-6 shadow-xl sm:p-8">
             <div className="mb-8">
                 <h2 className="text-2xl font-semibold text-stone-900">
-                    Payment Details
+                    Delivery & Payment
                 </h2>
-                <p className="mt-1 text-sm text-stone-500">
-                    Enter your card information below.
+                <p className="mt-1 text-sm text-stone-600">
+                    Enter your contact information and address
                 </p>
             </div>
+
             <form onSubmit={onSubmit} className="space-y-6">
-                <PaymentInput 
-                    label="Cardholder Name" 
-                    name="cardName" 
-                    value={paymentData.cardName}
+                <PaymentInput
+                    name="name"
+                    label="Full Name"
+                    value={customerData.name}
                     onChange={onChange}
-                    placeholder="Please enter the name on your card"
+                    readOnly
                 />
-                <PaymentInput 
-                    label="Bankcard Number" 
-                    name="cardNumber" 
-                    value={paymentData.cardNumber}
-                    type="number"
+                <PaymentInput
+                    name="email"
+                    label="Email"
+                    value={customerData.email}
                     onChange={onChange}
-                    placeholder="Please enter the number at the back of your card"
-                    maxLength={19}
+                    readOnly
                 />
-                <div className="grid grid-cols-2 gap-4">
-                    <PaymentInput 
-                        label="Expiry date" 
-                        name="expiryDate" 
-                        value={paymentData.expiryDate}
-                        onChange={onChange}
-                        placeholder="MM / YY"
-                        maxLength={5}
-                    />
-                    <PaymentInput 
-                        label="CVV" 
-                        name="cvv" 
-                        value={paymentData.cvv}
-                        onChange={onChange}
-                        placeholder="Please enter your 3 digit security code (CVV)"
-                        type="password"
-                        maxLength={4}
-                    />
+                <PaymentInput
+                    name="phone"
+                    type="tel"
+                    label="Phone Number"
+                    value={customerData.phoneNumber}
+                    onChange={onChange}
+                    required
+                    placeholder="Enter your phone number here"
+                />
+                <PaymentInput
+                    name="address"
+                    inputType="address"
+                    label="Delivery Address"
+                    value={customerData.address}
+                    onChange={onChange}
+                    required
+                    placeholder="Street address, city and postal code etc."
+                />
+
+                <div className="flex items-center gap-2 text-sm text-stone-600">
+                    <Lock size={16} className="mt-0.5 shrink-0" />
+                    Your payment will be securely processed by PayFast.
                 </div>
-                <div className="flex items-center gap-2 text-sm text-stone-900">
-                    <Lock size={14} />
-                    Your payment information is securely handled.
-                </div>
-                <button
-                    type="submit"
-                    className="
-                        flex
-                        h-14
-                        w-full
-                        items-center
-                        justify-center
-                        gap-2
-                        rounded-2xl
-                        bg-[#5a311d]
-                        font-semibold
-                        text-white
-                        shadow-lg
-                        transition-all
-                        duration-300
-                        hover:-translate-y-1
-                        hover:bg-[#d96]
-                        hover:shadow-xl
-                        active:translate-y-0
-                    "
-                >
-                    <CreditCard size={20} />
-                    Pay Now
-                </button>
+                <PayButton isLoading={loading} />
             </form>
         </section>
     )
