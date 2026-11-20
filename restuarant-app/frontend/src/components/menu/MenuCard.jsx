@@ -1,0 +1,99 @@
+import { Heart, Plus, Star } from "lucide-react";
+import { useFavourites } from "../../context/FavouriteContext";
+import { useState } from "react";
+
+export default function MenuCard({ item, onAddToCart }) {
+    const { toggleFavourites, isFavourite} = useFavourites();
+    const [cartMessage, setCartMessage] = useState("");
+    const favourite = isFavourite(item._id);
+
+    // this is added for the updated Cart context
+    function handleAddToCart() {
+        const success = onAddToCart(item);
+        if (success === false) {
+            setCartMessage("Sorry, this item is unavailable or out of stock.");
+            return;
+        }
+
+        setCartMessage("Added to cart!");
+    }
+
+    return (
+        <article
+            className="
+                overflow-hidden rounded-3xl bg-white shadow-lg 
+                transition-all duration-300 hover:-translate-y-2 
+                hover:shadow-2xl
+            "
+        >
+            <img 
+                src={item.image} 
+                alt={item.name} 
+                className="h-52 w-full object-cover transition duration-500 hover:scale-110"
+            />
+            <div className="p-6">
+                <div className="flex items-center justify-between">
+                    <h2 className="text-xl font-semibold">
+                        {item.name}
+                    </h2>
+                    <button
+                        onClick={async () => {
+                            try {
+                                await toggleFavourites(item)
+                            } catch (err) {
+                                console.error('Favourite error: ', err);
+                            }
+                        }}
+                        aria-label={
+                            favourite ? 'Remove from favourites' : 'Add to favourites'
+                        }
+                        className="
+                            rounded-full
+                            p-2
+                            transition-all
+                            duration-300
+                            hover:bg-stone-100
+                            active:scale-90
+                        "
+                    >
+                        <Heart
+                            size={22} 
+                            fill={favourite ? "red" : "none"}
+                            className={`transition-all duration-200
+                                ${favourite ? 'fill-red-500 text-red-500' : 'text-stone-600'}
+                            `}
+                        />
+                    </button>
+                </div>
+                <p className="mt-3 text-sm text-stone-600">
+                    {item.description}
+                </p>
+                <div className="mt-5 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                        <Star size={18} className="fill-yellow-400 text-yellow-400" />
+                        <span>{item.rating}</span>
+                    </div>
+                    <span className="font-bold text-[#d96d2d]">R{item.price}</span>
+                </div>
+                <button 
+                    disabled={Number(item.quantity) > 0}
+                    className="
+                        mt-6 flex w-full items-center justify-center gap-2 rounded-xl
+                        bg-[#5a311d] py-3 font-semibold text-white transition hover:bg-[#d96d2d]
+                    "
+                    onClick={handleAddToCart}
+                >
+                    <Plus size={18} />
+                    {Number(item.stock) <= 0 ? "Out of stock" : "Add to cart"}
+                </button>
+
+                {/* The status message to be displayed */}
+                {cartMessage && (
+                    <p className="mt-2 text-center text-xs text-stone-500">
+                        {cartMessage}
+                    </p>
+                )}
+            </div>
+        </article>
+    )
+}
