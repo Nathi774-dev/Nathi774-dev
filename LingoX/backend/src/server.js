@@ -1,5 +1,7 @@
 const express = require('express')
 const authRoutes = require("./routes/authRoutes")
+const exerciseRoutes = require("./routes/exerciseRoutes")
+const lessonRoutes = require("./routes/lessons")
 const connectDB = require("./config/db")
 const dotenv = require("dotenv")
 const cors = require("cors")
@@ -16,6 +18,8 @@ app.use(express.json())
 
 // routes
 app.use("/api/auth", authRoutes)
+app.use("/api/exercises", exerciseRoutes)
+app.use("/api/lessons", lessonRoutes)
 
 const startServer = async () => {
     try {

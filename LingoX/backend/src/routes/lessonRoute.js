@@ -1,5 +1,10 @@
-const express =reqire("express")
+const express = reqire("express")
 
-const { getExercises, submitExercise } = require("../controllers/exercises");
+const { getLessons, getLessonId } = require("../controllers/lessons")
+const { protect } = require("../middleware/auth")
+const router = express.Router()
 
-const router = ex
+router.get("/", getLessons)
+router.get("/:id", getLessonId)
+
+module.exports = router
